@@ -328,14 +328,14 @@
             display: flex;
             align-items: center;
             flex-shrink: 0;
-            gap: 10px;
+            gap: 8px;
             transition: var(--transition);
         }
 
         .logo:hover { transform: scale(1.02); }
 
         .logo-img {
-            height: 80px;
+            height: 55px;
             width: auto;
             object-fit: contain;
             transition: var(--transition);
@@ -351,7 +351,7 @@
         }
 
         .logo-text .logo-main {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--green-dark);
             letter-spacing: -0.5px;
@@ -361,7 +361,7 @@
 
         .logo-text .logo-sub {
             font-family: var(--font-body);
-            font-size: 0.62rem;
+            font-size: 0.6rem;
             font-weight: 500;
             color: var(--text-light);
             letter-spacing: 0.3px;
@@ -1157,6 +1157,7 @@
             font-size: 0.92rem;
             color: var(--text-medium);
             font-weight: 400;
+            word-break: break-word;
         }
 
         .contact-item a:hover { color: var(--green); }
@@ -1205,9 +1206,9 @@
         }
 
         .footer-about img.footer-logo {
-            height: 70px;
+            height: 60px;
             width: auto;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             transition: var(--transition);
         }
 
@@ -1311,6 +1312,7 @@
             align-items: center;
             gap: 10px;
             font-weight: 400;
+            word-break: break-word;
         }
 
         .footer-contact p svg {
@@ -1619,7 +1621,7 @@
 
         /* ===== Responsive - Tablet ===== */
         @media (min-width: 768px) {
-            :root { --header-height: 72px; }
+            :root { --header-height: 80px; }
             .container { padding: 0 28px; }
             .section { padding: 85px 0; }
             .section-title { font-size: 2.3rem; }
@@ -1627,9 +1629,9 @@
             .hero-subtitle { font-size: 1.3rem; }
             .hero-desc { font-size: 1.05rem; }
 
-            .logo-img { height: 46px; }
-            .logo-text .logo-main { font-size: 1.15rem; }
-            .logo-text .logo-sub { font-size: 0.68rem; }
+            .logo-img { height: 62px; }
+            .logo-text .logo-main { font-size: 1.1rem; }
+            .logo-text .logo-sub { font-size: 0.66rem; }
 
             .about-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1661,7 +1663,7 @@
 
         /* ===== Responsive - Desktop ===== */
         @media (min-width: 1024px) {
-            :root { --header-height: 76px; }
+            :root { --header-height: 85px; }
             .container { padding: 0 40px; }
             .section { padding: 100px 0; }
             .section-title { font-size: 2.6rem; }
@@ -1672,9 +1674,9 @@
 
             .hero-title { font-size: 3.6rem; }
 
-            .logo-img { height: 50px; }
-            .logo-text .logo-main { font-size: 1.2rem; }
-            .logo-text .logo-sub { font-size: 0.72rem; }
+            .logo-img { height: 68px; }
+            .logo-text .logo-main { font-size: 1.15rem; }
+            .logo-text .logo-sub { font-size: 0.7rem; }
 
             .cards-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -1691,7 +1693,7 @@
                 gap: 55px;
             }
 
-            .footer-about img.footer-logo { height: 55px; }
+            .footer-about img.footer-logo { height: 65px; }
         }
 
         /* ===== Responsive - Large Desktop ===== */
@@ -1703,58 +1705,16 @@
             }
         }
 
-        /* ===== Responsive - Small Mobile ===== */
-        @media (max-width: 480px) {
-            :root { --header-height: 62px; }
-            .container { padding: 0 14px; }
-            .section { padding: 50px 0; }
-            .section-title { font-size: 1.5rem; }
+        /* ============================================
+           Responsive - Small Mobile (تحسينات شاملة للهواتف)
+           ============================================ */
+        @media (max-width: 600px) {
+            :root { --header-height: 65px; }
+            .container { padding: 0 16px; }
 
-            .section-label { font-size: 0.72rem; }
-            .section-label::before,
-            .section-label::after { width: 18px; }
-            .section-label::before { right: -28px; }
-            .section-label::after { left: -28px; }
-
-            .hero { padding: 90px 0 50px; min-height: auto; }
-            .hero-title { font-size: 1.75rem; }
-            .hero-subtitle { font-size: 0.98rem; }
-            .hero-badge { font-size: 0.72rem; padding: 6px 14px; }
-            .hero-desc { font-size: 0.88rem; line-height: 1.8; }
-            .hero-buttons { gap: 10px; }
-
-            .btn {
-                padding: 11px 22px;
-                font-size: 0.85rem;
-                min-width: 120px;
-            }
-
-            .btn svg { width: 16px; height: 16px; }
-
-            .gallery-grid { gap: 8px; }
-            .gallery-item { border-radius: var(--radius-sm); }
-
-            .floating-btn {
-                width: 44px;
-                height: 44px;
-            }
-
-            .floating-btn svg { width: 20px; height: 20px; }
-
-            .floating-buttons {
-                bottom: 15px;
-                left: 15px;
-                gap: 8px;
-            }
-
-            .lightbox-nav {
-                width: 36px;
-                height: 36px;
-            }
-
-            .lightbox-nav svg { width: 18px; height: 18px; }
-
-            .logo-img { height: 36px; }
+            /* ===== الهيدر ===== */
+            .logo { gap: 6px; }
+            .logo-img { height: 48px; }
             .logo-text .logo-main { font-size: 0.9rem; }
             .logo-text .logo-sub { display: none; }
 
@@ -1771,29 +1731,408 @@
 
             .hamburger span { width: 18px; }
 
-            .about-content .section-title { font-size: 1.35rem; }
-            .about-image img { min-height: 240px; }
-
-            .card { padding: 22px 18px; }
-            .card-icon {
-                width: 56px;
-                height: 56px;
+            /* ===== الهيرو ===== */
+            .hero {
+                min-height: auto;
+                padding: 90px 0 50px;
             }
+
+            .hero-content {
+                padding: 0;
+            }
+
+            .hero-badge {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+                margin-bottom: 14px;
+            }
+
+            .hero-badge svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .hero-title {
+                font-size: 1.55rem;
+                line-height: 1.35;
+                margin-bottom: 12px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 14px;
+            }
+
+            .hero-desc {
+                font-size: 0.85rem;
+                line-height: 1.75;
+                margin-bottom: 22px;
+                padding: 0 4px;
+            }
+
+            .hero-buttons {
+                gap: 8px;
+            }
+
+            .hero-scroll-indicator {
+                bottom: 15px;
+            }
+
+            /* ===== الأقسام ===== */
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-header {
+                margin-bottom: 28px;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+                line-height: 1.4;
+            }
+
+            .section-label {
+                font-size: 0.7rem;
+                letter-spacing: 1.5px;
+            }
+
+            .section-label::before,
+            .section-label::after {
+                width: 18px;
+            }
+
+            .section-label::before { right: -25px; }
+            .section-label::after { left: -25px; }
+
+            /* ===== الأزرار ===== */
+            .btn {
+                padding: 11px 22px;
+                font-size: 0.82rem;
+                min-width: 120px;
+            }
+
+            .btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            /* ===== البطاقات ===== */
+            .cards-grid {
+                gap: 14px;
+            }
+
+            .card {
+                padding: 20px 16px;
+            }
+
+            .card-icon {
+                width: 52px;
+                height: 52px;
+                margin-bottom: 14px;
+                border-radius: 18px;
+            }
+
             .card-icon svg {
                 width: 26px;
                 height: 26px;
             }
 
-            .contact-icon {
-                width: 42px;
-                height: 42px;
+            .card h3 {
+                font-size: 0.95rem;
+                margin-bottom: 8px;
             }
-            .contact-icon svg { width: 18px; height: 18px; }
 
-            .contact-map iframe { height: 260px; }
+            .card p {
+                font-size: 0.82rem;
+                line-height: 1.65;
+            }
 
-            .timeline-item { padding-right: 40px; }
-            .timeline-dot { width: 18px; height: 18px; }
+            /* ===== من نحن ===== */
+            .about-grid {
+                gap: 22px;
+            }
+
+            .about-image {
+                border-radius: var(--radius-md);
+            }
+
+            .about-image img {
+                min-height: 220px;
+                max-height: 300px;
+            }
+
+            .about-badge {
+                font-size: 0.72rem;
+                padding: 7px 14px;
+                bottom: 12px;
+                right: 12px;
+            }
+
+            .about-content .section-title {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+
+            .about-lead {
+                font-size: 0.98rem;
+                margin-bottom: 12px;
+            }
+
+            .about-content p {
+                font-size: 0.85rem;
+                line-height: 1.75;
+                margin-bottom: 10px;
+            }
+
+            /* ===== الخط الزمني ===== */
+            .timeline {
+                padding-right: 12px;
+            }
+
+            .timeline::before {
+                right: 6px;
+                width: 2px;
+            }
+
+            .timeline-item {
+                padding-right: 32px;
+                margin-bottom: 18px;
+            }
+
+            .timeline-dot {
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
+                top: 4px;
+            }
+
+            .timeline-content {
+                padding: 14px 16px;
+                border-right-width: 3px;
+            }
+
+            .timeline-content:hover {
+                transform: translateX(-4px);
+            }
+
+            .timeline-content h3 {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .timeline-year {
+                font-size: 0.68rem;
+                margin-bottom: 6px;
+            }
+
+            .timeline-year svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            /* ===== قسم الجودة ===== */
+            .about-lead[data-i18n="quality_text"] {
+                font-size: 1rem !important;
+                margin-bottom: 20px !important;
+                line-height: 1.8 !important;
+            }
+
+            /* ===== معرض الصور ===== */
+            .gallery-grid {
+                gap: 6px;
+            }
+
+            .gallery-item {
+                border-radius: 6px;
+            }
+
+            /* ===== تواصل معنا ===== */
+            .contact-grid {
+                gap: 22px;
+            }
+
+            .contact-info {
+                gap: 12px;
+            }
+
+            .contact-item {
+                padding: 14px 16px;
+                gap: 12px;
+            }
+
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+
+            .contact-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .contact-item h3 {
+                font-size: 0.8rem;
+                margin-bottom: 3px;
+            }
+
+            .contact-item a,
+            .contact-item p {
+                font-size: 0.85rem;
+            }
+
+            .contact-map iframe {
+                height: 220px;
+            }
+
+            /* ===== الفوتر ===== */
+            .footer {
+                padding: 35px 0 0;
+                margin-top: 30px;
+            }
+
+            .footer-grid {
+                gap: 25px;
+                padding-bottom: 25px;
+            }
+
+            .footer-about img.footer-logo {
+                height: 55px;
+                margin-bottom: 15px;
+            }
+
+            .footer-about p {
+                font-size: 0.85rem;
+                line-height: 1.75;
+            }
+
+            .footer-capital {
+                font-size: 0.75rem;
+                padding: 10px 14px;
+                margin-top: 12px;
+            }
+
+            .footer-capital svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .footer-links h3,
+            .footer-contact h3 {
+                font-size: 0.95rem;
+                margin-bottom: 14px;
+                padding-bottom: 8px;
+            }
+
+            .footer-links h3 svg,
+            .footer-contact h3 svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .footer-links a,
+            .footer-contact p {
+                font-size: 0.85rem;
+            }
+
+            .footer-contact p svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .footer-bottom {
+                padding: 14px 0;
+                font-size: 0.78rem;
+            }
+
+            .footer-bottom p:last-child {
+                font-size: 0.75rem !important;
+            }
+
+            /* ===== الأزرار العائمة ===== */
+            .floating-buttons {
+                bottom: 12px;
+                left: 12px;
+                gap: 8px;
+            }
+
+            .floating-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .floating-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .lang-float-btn {
+                font-size: 0.7rem;
+            }
+
+            /* ===== زر العودة للأعلى ===== */
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 12px;
+                right: 12px;
+            }
+
+            .back-to-top svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* ===== Lightbox ===== */
+            .lightbox-nav {
+                width: 38px;
+                height: 38px;
+            }
+
+            .lightbox-nav svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .lightbox-close {
+                width: 36px;
+                height: 36px;
+                top: -45px;
+            }
+
+            .lightbox-close svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        /* ===== Responsive - Very Small Mobile ===== */
+        @media (max-width: 380px) {
+            :root { --header-height: 60px; }
+            .container { padding: 0 12px; }
+
+            .logo-img { height: 42px; }
+            .logo-text .logo-main { font-size: 0.82rem; }
+
+            .hero-title { font-size: 1.35rem; }
+            .hero-subtitle { font-size: 0.85rem; }
+            .hero-desc { font-size: 0.8rem; }
+
+            .section-title { font-size: 1.2rem; }
+
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.78rem;
+                min-width: 105px;
+            }
+
+            .floating-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .floating-btn svg { width: 18px; height: 18px; }
         }
 
         /* ===== Scrollbar ===== */
@@ -1848,17 +2187,6 @@
         html[dir="ltr"] .back-to-top {
             right: auto;
             left: 20px;
-        }
-
-        @media (max-width: 480px) {
-            .back-to-top {
-                width: 40px;
-                height: 40px;
-                bottom: 15px;
-                right: 15px;
-            }
-            .back-to-top svg { width: 18px; height: 18px; }
-            html[dir="ltr"] .back-to-top { right: auto; left: 15px; }
         }
     </style>
 </head>
@@ -2026,7 +2354,7 @@
             </div>
 
             <!-- الخط الزمني -->
-            <div style="margin-top: 70px;">
+            <div style="margin-top: 50px;">
                 <div class="section-header reveal fade-up">
                     <span class="section-label" data-i18n="story_label">قصتنا</span>
                     <h2 class="section-title" data-i18n="story_title">قصتنا تبدأ من <span class="highlight-gold">الطبيعة</span></h2>
@@ -2117,24 +2445,24 @@
         </div>
 
         <!-- الجودة (بدون صورة - تصميم مركزي) -->
-        <div class="container" style="margin-top: 80px;">
+        <div class="container" style="margin-top: 50px;">
             <div class="section-header reveal fade-up">
                 <span class="section-label" data-i18n="quality_label">الجودة</span>
                 <h2 class="section-title" data-i18n="quality_title">نبدأ من أعلى معايير الجودة</h2>
             </div>
             <div class="reveal fade-up delay-1" style="max-width: 750px; margin: 0 auto; text-align: center;">
                 <p class="about-lead" data-i18n="quality_text" style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.9;">في <span class="highlight-gold">اثير الطبيعة</span>، الجودة ليست خيارًا، بل هي أساس كل خطوة نخطوها.</p>
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <span style="display: flex; align-items: center; gap: 14px; font-size: 1rem; font-weight: 500; color: var(--green-dark); padding: 18px 22px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
-                        <svg style="width:24px;height:24px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 20px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
+                        <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator1">جودة عالية</span>
                     </span>
-                    <span style="display: flex; align-items: center; gap: 14px; font-size: 1rem; font-weight: 500; color: var(--green-dark); padding: 18px 22px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
-                        <svg style="width:24px;height:24px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 20px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
+                        <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator2">مصادر طبيعية موثوقة</span>
                     </span>
-                    <span style="display: flex; align-items: center; gap: 14px; font-size: 1rem; font-weight: 500; color: var(--green-dark); padding: 18px 22px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
-                        <svg style="width:24px;height:24px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 20px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
+                        <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator3">اختيار دقيق</span>
                     </span>
                 </div>
@@ -2266,8 +2594,8 @@
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copyright">© 2026 شركة اثير الطبيعة لصناعة الأعلاف و المطاحن. جميع الحقوق محفوظة.</p>
-                <p style="margin-top: 8px; color: var(--gold-light); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-heading);">
-                    <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <p style="margin-top: 8px; color: var(--gold-light); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-heading); flex-wrap: wrap;">
+                    <svg style="width:16px;height:16px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     <span data-i18n="footer_capital_footer">رأس مال الشركة: 30,000,000 دينار ليبي</span>
                 </p>
             </div>
