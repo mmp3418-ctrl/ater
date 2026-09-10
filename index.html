@@ -2,14 +2,14 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>شركة اثير الطبيعة | لصناعة الأعلاف والمطاحن</title>
     <meta name="description" content="شركة اثير الطبيعة لصناعة الأعلاف و المطاحن - رؤية جديدة في عالم الأعلاف والطحن. جودة استثنائية من قلب الطبيعة.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== المتغيرات ===== */
+        /* ===== Reset & Base ===== */
         :root {
             --green-dark: #0F4C30;
             --green: #2D8041;
@@ -55,6 +55,9 @@
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
             -webkit-tap-highlight-color: transparent;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -62,10 +65,13 @@
             color: var(--text-dark);
             background-color: var(--cream);
             line-height: 1.8;
+            width: 100%;
+            max-width: 100%;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 400;
+            position: relative;
         }
 
         h1, h2, h3, h4, h5, h6,
@@ -82,8 +88,18 @@
             letter-spacing: -0.3px;
         }
 
-        img { max-width: 100%; height: auto; display: block; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+            transition: var(--transition); 
+        }
+        
         ul { list-style: none; }
 
         button {
@@ -205,6 +221,7 @@
             transition: var(--transition);
             letter-spacing: 0.3px;
             min-width: 150px;
+            max-width: 100%;
             text-align: center;
             cursor: pointer;
             position: relative;
@@ -285,7 +302,7 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            background: rgba(250, 248, 238, 0.7);
+            background: rgba(250, 248, 238, 0.85);
             backdrop-filter: blur(25px) saturate(200%);
             -webkit-backdrop-filter: blur(25px) saturate(200%);
             transition: var(--transition);
@@ -293,6 +310,8 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgba(234, 162, 34, 0.1);
+            width: 100%;
+            max-width: 100%;
         }
 
         .header::before {
@@ -311,7 +330,7 @@
         }
 
         .header.scrolled {
-            background: rgba(250, 248, 238, 0.95);
+            background: rgba(250, 248, 238, 0.98);
             box-shadow: 0 8px 32px rgba(15, 76, 48, 0.12);
             border-bottom: 1px solid rgba(234, 162, 34, 0.25);
         }
@@ -321,15 +340,17 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            flex-shrink: 0;
+            flex-shrink: 1;
             gap: 8px;
             transition: var(--transition);
+            min-width: 0;
+            max-width: 100%;
         }
 
         .logo:hover { transform: scale(1.02); }
@@ -337,9 +358,11 @@
         .logo-img {
             height: 55px;
             width: auto;
+            max-width: 100%;
             object-fit: contain;
             transition: var(--transition);
             filter: drop-shadow(0 2px 6px rgba(15, 76, 48, 0.15));
+            flex-shrink: 0;
         }
 
         .logo:hover .logo-img { transform: rotate(-5deg) scale(1.1); }
@@ -348,6 +371,7 @@
             display: flex;
             flex-direction: column;
             line-height: 1.15;
+            min-width: 0;
         }
 
         .logo-text .logo-main {
@@ -355,6 +379,7 @@
             font-weight: 700;
             color: var(--green-dark);
             letter-spacing: -0.5px;
+            white-space: nowrap;
         }
 
         .logo-text .logo-main span { color: var(--gold); }
@@ -365,6 +390,7 @@
             font-weight: 500;
             color: var(--text-light);
             letter-spacing: 0.3px;
+            white-space: nowrap;
         }
 
         .main-nav { display: none; }
@@ -430,26 +456,28 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            flex-shrink: 0;
         }
 
         .lang-toggle-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: var(--radius-full);
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(10px);
             color: var(--green-dark);
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             border: 2px solid var(--gold);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .lang-toggle-btn::before {
@@ -480,14 +508,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: var(--radius-sm);
             background: rgba(255,255,255,0.7);
             backdrop-filter: blur(10px);
             gap: 5px;
             transition: var(--transition);
             border: 1px solid rgba(15, 76, 48, 0.1);
+            flex-shrink: 0;
         }
 
         .hamburger:hover {
@@ -499,7 +528,7 @@
 
         .hamburger span {
             display: block;
-            width: 20px;
+            width: 18px;
             height: 2px;
             background: var(--green-dark);
             border-radius: 2px;
@@ -530,10 +559,12 @@
             transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 999;
             border-bottom: 3px solid var(--gold);
+            width: 100%;
+            max-width: 100%;
         }
 
         .mobile-menu.active {
-            max-height: 600px;
+            max-height: 500px;
             overflow-y: auto;
         }
 
@@ -558,6 +589,7 @@
             height: 20px;
             color: var(--gold);
             transition: var(--transition);
+            flex-shrink: 0;
         }
 
         .mobile-nav-link:hover,
@@ -576,12 +608,15 @@
         /* ===== الهيرو ===== */
         .hero {
             position: relative;
+            width: 100%;
+            max-width: 100%;
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 100px 0 60px;
+            padding: calc(var(--header-height) + 40px) 0 60px;
         }
 
         .hero-bg {
@@ -614,7 +649,9 @@
             position: relative;
             z-index: 2;
             text-align: center;
+            width: 100%;
             max-width: 850px;
+            padding: 0 4px;
         }
 
         .hero-badge {
@@ -633,15 +670,18 @@
             margin-bottom: 20px;
             backdrop-filter: blur(10px);
             animation: fadeInDown 1s ease 0.2s both;
+            max-width: 100%;
+            text-align: center;
         }
 
         .hero-badge svg {
             width: 16px;
             height: 16px;
+            flex-shrink: 0;
         }
 
         .hero-title {
-            font-size: 2.3rem;
+            font-size: clamp(1.6rem, 5vw + 0.5rem, 4rem);
             font-weight: 700;
             color: var(--white);
             line-height: 1.25;
@@ -649,25 +689,31 @@
             text-shadow: 0 4px 25px rgba(0,0,0,0.35);
             letter-spacing: -0.8px;
             animation: fadeInUp 1s ease 0.4s both;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .hero-subtitle {
             font-family: var(--font-body);
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw + 0.3rem, 1.3rem);
             font-weight: 500;
             color: var(--gold-light);
             margin-bottom: 20px;
             animation: fadeInUp 1s ease 0.6s both;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .hero-desc {
-            font-size: 0.98rem;
+            font-size: clamp(0.85rem, 2vw + 0.3rem, 1.05rem);
             color: rgba(255, 255, 255, 0.92);
             line-height: 1.9;
             max-width: 680px;
             margin: 0 auto 30px;
             font-weight: 400;
             animation: fadeInUp 1s ease 0.8s both;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .hero-buttons {
@@ -676,6 +722,11 @@
             gap: 12px;
             justify-content: center;
             animation: fadeInUp 1s ease 1s both;
+            width: 100%;
+        }
+
+        .hero-buttons .btn {
+            flex: 0 1 auto;
         }
 
         .hero-scroll-indicator {
@@ -733,7 +784,8 @@
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 18px;
+            width: 100%;
         }
 
         .card {
@@ -742,12 +794,14 @@
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: var(--radius-md);
-            padding: 28px 22px;
+            padding: 24px 20px;
             text-align: center;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
+            width: 100%;
+            max-width: 100%;
         }
 
         .card::before {
@@ -769,18 +823,19 @@
         }
 
         .card-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 18px;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(234, 162, 34, 0.15), rgba(45, 128, 65, 0.1));
-            border-radius: 22px;
+            border-radius: 20px;
             transition: var(--transition-bounce);
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(234, 162, 34, 0.15);
+            flex-shrink: 0;
         }
 
         .card-icon::before {
@@ -794,8 +849,8 @@
         }
 
         .card-icon svg {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             color: var(--gold);
             transition: var(--transition);
             position: relative;
@@ -805,7 +860,7 @@
 
         .card:hover .card-icon {
             transform: scale(1.12) rotate(-8deg);
-            border-radius: 28px;
+            border-radius: 26px;
             box-shadow: 0 8px 25px rgba(234, 162, 34, 0.3);
         }
 
@@ -817,27 +872,31 @@
         }
 
         .card h3 {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--green-dark);
             margin-bottom: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .card p {
             font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-medium);
             line-height: 1.75;
             font-weight: 400;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .service-card {
             text-align: right;
-            padding: 28px;
+            padding: 24px 20px;
         }
 
         .service-card .card-icon {
-            margin: 0 0 18px 0;
+            margin: 0 0 16px 0;
             justify-content: flex-start;
         }
 
@@ -845,8 +904,9 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 35px;
+            gap: 30px;
             align-items: center;
+            width: 100%;
         }
 
         .about-image {
@@ -855,6 +915,8 @@
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             transition: var(--transition-slow);
+            width: 100%;
+            max-width: 100%;
         }
 
         .about-image:hover {
@@ -877,7 +939,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            min-height: 280px;
+            min-height: 240px;
             max-height: 480px;
             transition: var(--transition-slow);
         }
@@ -886,46 +948,52 @@
 
         .about-badge {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 16px;
+            right: 16px;
             background: rgba(15, 76, 48, 0.9);
             backdrop-filter: blur(10px);
             color: var(--white);
-            padding: 10px 22px;
+            padding: 8px 16px;
             border-radius: var(--radius-full);
             font-family: var(--font-heading);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             animation: pulseGlow 3s infinite;
+            max-width: calc(100% - 32px);
         }
 
         .about-badge svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             color: var(--gold-light);
+            flex-shrink: 0;
         }
 
         .about-content .section-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
         }
 
         .about-lead {
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--gold);
             margin-bottom: 15px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .about-content p {
             color: var(--text-medium);
             margin-bottom: 12px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 400;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* ===== الخط الزمني ===== */
@@ -934,6 +1002,7 @@
             max-width: 700px;
             margin: 0 auto;
             padding-right: 20px;
+            width: 100%;
         }
 
         .timeline::before {
@@ -949,7 +1018,7 @@
         .timeline-item {
             position: relative;
             padding-right: 45px;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .timeline-item:last-child { margin-bottom: 0; }
@@ -958,8 +1027,8 @@
             position: absolute;
             right: 0;
             top: 5px;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background: var(--gold);
             border: 4px solid var(--white);
             border-radius: 50%;
@@ -978,11 +1047,13 @@
         .timeline-content {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(15px);
-            padding: 18px 22px;
+            padding: 16px 20px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             border-right: 4px solid var(--gold);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .timeline-content:hover {
@@ -996,7 +1067,7 @@
             align-items: center;
             gap: 5px;
             font-family: var(--font-heading);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             color: var(--gold);
             text-transform: uppercase;
@@ -1007,19 +1078,23 @@
         .timeline-year svg {
             width: 14px;
             height: 14px;
+            flex-shrink: 0;
         }
 
         .timeline-content h3 {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 600;
             color: var(--green-dark);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* ===== معرض الصور ===== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
         }
 
         .gallery-item {
@@ -1030,6 +1105,7 @@
             aspect-ratio: 1 / 1;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
+            width: 100%;
         }
 
         .gallery-item::after {
@@ -1084,28 +1160,32 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 35px;
+            gap: 30px;
+            width: 100%;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
+            width: 100%;
         }
 
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 14px;
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 20px 22px;
+            padding: 18px 20px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             border: 1px solid rgba(255,255,255,0.6);
             border-right: 4px solid transparent;
+            width: 100%;
+            max-width: 100%;
         }
 
         .contact-item:hover {
@@ -1116,21 +1196,21 @@
         }
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(234, 162, 34, 0.15), rgba(45, 128, 65, 0.1));
-            border-radius: 16px;
+            border-radius: 14px;
             transition: var(--transition-bounce);
             border: 1px solid rgba(234, 162, 34, 0.15);
         }
 
         .contact-icon svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             color: var(--gold);
             transition: var(--transition);
             stroke-width: 1.8;
@@ -1144,8 +1224,13 @@
 
         .contact-item:hover .contact-icon svg { color: var(--white); }
 
+        .contact-item > div {
+            min-width: 0;
+            flex: 1;
+        }
+
         .contact-item h3 {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--green-dark);
             margin-bottom: 5px;
@@ -1154,10 +1239,11 @@
         .contact-item a,
         .contact-item p {
             font-family: var(--font-body);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: var(--text-medium);
             font-weight: 400;
             word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .contact-item a:hover { color: var(--green); }
@@ -1167,6 +1253,7 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
+            width: 100%;
         }
 
         .contact-map:hover {
@@ -1177,7 +1264,7 @@
         .contact-map iframe {
             display: block;
             width: 100%;
-            height: 320px;
+            height: 280px;
             border: none;
         }
 
@@ -1185,9 +1272,12 @@
         .footer {
             background: var(--green-dark);
             color: rgba(255, 255, 255, 0.8);
-            padding: 50px 0 0;
+            padding: 45px 0 0;
             position: relative;
             margin-top: 40px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .footer::before {
@@ -1201,14 +1291,16 @@
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 35px;
-            padding-bottom: 35px;
+            gap: 30px;
+            padding-bottom: 30px;
+            width: 100%;
         }
 
         .footer-about img.footer-logo {
             height: 60px;
             width: auto;
-            margin-bottom: 20px;
+            max-width: 100%;
+            margin-bottom: 18px;
             transition: var(--transition);
         }
 
@@ -1216,29 +1308,34 @@
 
         .footer-about p {
             font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             line-height: 1.8;
             font-weight: 400;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .footer-capital {
             margin-top: 15px;
-            padding: 12px 18px;
+            padding: 12px 16px;
             background: rgba(234, 162, 34, 0.12);
             border: 1px solid rgba(234, 162, 34, 0.3);
             border-radius: var(--radius-sm);
             font-family: var(--font-heading);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--gold-light);
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .footer-capital svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             flex-shrink: 0;
         }
 
@@ -1260,6 +1357,7 @@
             width: 18px;
             height: 18px;
             color: var(--gold);
+            flex-shrink: 0;
         }
 
         .footer-links h3::after,
@@ -1282,7 +1380,7 @@
         .footer-links a {
             font-family: var(--font-body);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
@@ -1295,6 +1393,7 @@
             height: 14px;
             color: var(--gold);
             transition: var(--transition);
+            flex-shrink: 0;
         }
 
         .footer-links a:hover {
@@ -1307,12 +1406,13 @@
         .footer-contact p {
             margin-bottom: 12px;
             font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
             font-weight: 400;
             word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .footer-contact p svg {
@@ -1320,11 +1420,13 @@
             height: 16px;
             color: var(--gold);
             flex-shrink: 0;
+            margin-top: 4px;
         }
 
         .footer-contact a {
             color: rgba(255, 255, 255, 0.7);
             transition: var(--transition);
+            word-break: break-word;
         }
 
         .footer-contact a:hover { color: var(--gold-light); }
@@ -1342,11 +1444,13 @@
             font-weight: 600;
             transition: var(--transition);
             border: 1px solid rgba(255,255,255,0.1);
+            max-width: 100%;
         }
 
         .footer-map-link svg {
             width: 14px;
             height: 14px;
+            flex-shrink: 0;
         }
 
         .footer-map-link:hover {
@@ -1361,24 +1465,26 @@
             padding: 18px 0;
             text-align: center;
             font-family: var(--font-body);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 400;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* ===== الأزرار العائمة ===== */
         .floating-buttons {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 16px;
+            left: 16px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             z-index: 900;
         }
 
         .floating-btn {
-            width: 50px;
-            height: 50px;
+            width: 46px;
+            height: 46px;
             border-radius: var(--radius-full);
             display: flex;
             align-items: center;
@@ -1387,13 +1493,14 @@
             transition: var(--transition-bounce);
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             backdrop-filter: blur(10px);
+            flex-shrink: 0;
         }
 
         .floating-btn svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
         }
 
         .floating-btn:hover {
@@ -1413,7 +1520,7 @@
             background: rgba(15, 76, 48, 0.9);
             color: var(--white);
             border: 2px solid var(--gold);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
         }
 
         .lang-float-btn:hover {
@@ -1520,6 +1627,47 @@
             font-weight: 600;
         }
 
+        /* ===== زر العودة للأعلى ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-dark), var(--green));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 900;
+            border: 2px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--green-dark);
+        }
+
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* ===== Reveal Animations ===== */
         .reveal {
             opacity: 0;
@@ -1559,7 +1707,7 @@
         }
 
         html[dir="ltr"] .floating-buttons {
-            left: auto; right: 20px;
+            left: auto; right: 16px;
         }
 
         html[dir="ltr"] .lightbox-close {
@@ -1584,7 +1732,7 @@
         }
 
         html[dir="ltr"] .service-card { text-align: left; }
-        html[dir="ltr"] .service-card .card-icon { margin: 0 0 18px 0; }
+        html[dir="ltr"] .service-card .card-icon { margin: 0 0 16px 0; }
 
         html[dir="ltr"] .timeline {
             padding-right: 0;
@@ -1619,60 +1767,62 @@
             right: auto; left: 0;
         }
 
-        /* ===== Responsive - Tablet ===== */
+        html[dir="ltr"] .back-to-top {
+            right: auto;
+            left: 16px;
+        }
+
+        /* ===== Responsive - Tablet (768px) ===== */
         @media (min-width: 768px) {
-            :root { --header-height: 80px; }
+            :root { --header-height: 78px; }
             .container { padding: 0 28px; }
-            .section { padding: 85px 0; }
-            .section-title { font-size: 2.3rem; }
-            .hero-title { font-size: 3rem; }
-            .hero-subtitle { font-size: 1.3rem; }
-            .hero-desc { font-size: 1.05rem; }
+            .section { padding: 80px 0; }
+            .section-title { font-size: 2.2rem; }
 
             .logo-img { height: 62px; }
             .logo-text .logo-main { font-size: 1.1rem; }
-            .logo-text .logo-sub { font-size: 0.66rem; }
+            .logo-text .logo-sub { font-size: 0.65rem; }
 
             .about-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 45px;
+                gap: 40px;
             }
 
-            .about-content .section-title { font-size: 1.8rem; }
+            .about-content .section-title { font-size: 1.7rem; }
 
             .cards-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 25px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 22px;
             }
 
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
+                gap: 14px;
             }
 
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 45px;
+                gap: 40px;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 35px;
+                gap: 30px;
             }
+
+            .footer-about img.footer-logo { height: 65px; }
         }
 
-        /* ===== Responsive - Desktop ===== */
+        /* ===== Responsive - Desktop (1024px) ===== */
         @media (min-width: 1024px) {
             :root { --header-height: 85px; }
             .container { padding: 0 40px; }
-            .section { padding: 100px 0; }
-            .section-title { font-size: 2.6rem; }
+            .section { padding: 95px 0; }
+            .section-title { font-size: 2.5rem; }
 
             .main-nav { display: block; }
             .hamburger { display: none; }
             .mobile-menu { display: none; }
-
-            .hero-title { font-size: 3.6rem; }
 
             .logo-img { height: 68px; }
             .logo-text .logo-main { font-size: 1.15rem; }
@@ -1680,150 +1830,183 @@
 
             .cards-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 25px;
+                gap: 24px;
             }
 
             .gallery-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 18px;
+                gap: 16px;
             }
 
             .footer-grid {
                 grid-template-columns: 1.5fr 1fr 1fr;
-                gap: 55px;
+                gap: 50px;
             }
 
-            .footer-about img.footer-logo { height: 65px; }
+            .footer-about img.footer-logo { height: 70px; }
+
+            .floating-buttons {
+                bottom: 20px;
+                left: 20px;
+                gap: 10px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 0.85rem;
+            }
+
+            .floating-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .back-to-top {
+                width: 46px;
+                height: 46px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .back-to-top svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            html[dir="ltr"] .floating-buttons {
+                left: auto;
+                right: 20px;
+            }
+
+            html[dir="ltr"] .back-to-top {
+                right: auto;
+                left: 20px;
+            }
         }
 
-        /* ===== Responsive - Large Desktop ===== */
+        /* ===== Responsive - Large Desktop (1280px) ===== */
         @media (min-width: 1280px) {
-            .hero-title { font-size: 4rem; }
             .gallery-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 22px;
+                gap: 20px;
             }
         }
 
-        /* ============================================
-           Responsive - Small Mobile (تحسينات شاملة للهواتف)
-           ============================================ */
-        @media (max-width: 600px) {
-            :root { --header-height: 65px; }
-            .container { padding: 0 16px; }
+        /* ============================================================
+           MOBILE - Small Screens (max-width: 767px)
+           True Mobile Layout - Not just a shrunk Desktop
+           ============================================================ */
+        @media (max-width: 767px) {
+            :root { --header-height: 62px; }
 
-            /* ===== الهيدر ===== */
-            .logo { gap: 6px; }
-            .logo-img { height: 48px; }
-            .logo-text .logo-main { font-size: 0.9rem; }
+            /* ===== Base ===== */
+            .container { padding: 0 14px; }
+            .section { padding: 45px 0; }
+            .section-header { margin-bottom: 28px; }
+            .section-title { 
+                font-size: clamp(1.3rem, 5.5vw, 1.6rem); 
+                line-height: 1.4;
+            }
+            .section-label {
+                font-size: 0.7rem;
+                letter-spacing: 1.5px;
+                margin-bottom: 10px;
+            }
+            .section-label::before,
+            .section-label::after { width: 18px; }
+            .section-label::before { right: -25px; }
+            .section-label::after { left: -25px; }
+
+            /* ===== Header ===== */
+            .header-container { gap: 6px; }
+            .logo { gap: 6px; min-width: 0; flex: 1 1 auto; }
+            .logo-img { height: 42px; }
+            .logo-text { min-width: 0; }
+            .logo-text .logo-main { 
+                font-size: 0.85rem; 
+                white-space: nowrap;
+            }
             .logo-text .logo-sub { display: none; }
 
             .lang-toggle-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 0.7rem;
+                width: 34px;
+                height: 34px;
+                font-size: 0.68rem;
             }
 
             .hamburger {
-                width: 36px;
-                height: 36px;
+                width: 34px;
+                height: 34px;
             }
+            .hamburger span { width: 16px; }
 
-            .hamburger span { width: 18px; }
-
-            /* ===== الهيرو ===== */
+            /* ===== Hero ===== */
             .hero {
                 min-height: auto;
-                padding: 90px 0 50px;
+                padding: calc(var(--header-height) + 40px) 0 60px;
             }
 
             .hero-content {
-                padding: 0;
-            }
-
-            .hero-badge {
-                font-size: 0.7rem;
-                padding: 6px 14px;
-                margin-bottom: 14px;
-            }
-
-            .hero-badge svg {
-                width: 14px;
-                height: 14px;
-            }
-
-            .hero-title {
-                font-size: 1.55rem;
-                line-height: 1.35;
-                margin-bottom: 12px;
-            }
-
-            .hero-subtitle {
-                font-size: 0.9rem;
-                margin-bottom: 14px;
-            }
-
-            .hero-desc {
-                font-size: 0.85rem;
-                line-height: 1.75;
-                margin-bottom: 22px;
                 padding: 0 4px;
             }
 
+            .hero-badge {
+                font-size: 0.68rem;
+                padding: 6px 14px;
+                margin-bottom: 14px;
+                letter-spacing: 0.5px;
+            }
+            .hero-badge svg {
+                width: 13px;
+                height: 13px;
+            }
+
+            .hero-title {
+                font-size: clamp(1.4rem, 6.5vw, 1.85rem);
+                line-height: 1.3;
+                margin-bottom: 12px;
+                letter-spacing: -0.5px;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+                margin-bottom: 14px;
+                line-height: 1.5;
+            }
+
+            .hero-desc {
+                font-size: clamp(0.82rem, 3vw, 0.9rem);
+                line-height: 1.75;
+                margin-bottom: 22px;
+            }
+
             .hero-buttons {
-                gap: 8px;
+                gap: 10px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                flex: 1 1 100%;
+                min-width: 0;
+                padding: 12px 20px;
+                font-size: 0.85rem;
             }
 
             .hero-scroll-indicator {
                 bottom: 15px;
             }
 
-            /* ===== الأقسام ===== */
-            .section {
-                padding: 40px 0;
-            }
-
-            .section-header {
-                margin-bottom: 28px;
-            }
-
-            .section-title {
-                font-size: 1.35rem;
-                line-height: 1.4;
-            }
-
-            .section-label {
-                font-size: 0.7rem;
-                letter-spacing: 1.5px;
-            }
-
-            .section-label::before,
-            .section-label::after {
-                width: 18px;
-            }
-
-            .section-label::before { right: -25px; }
-            .section-label::after { left: -25px; }
-
-            /* ===== الأزرار ===== */
-            .btn {
-                padding: 11px 22px;
-                font-size: 0.82rem;
-                min-width: 120px;
-            }
-
-            .btn svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            /* ===== البطاقات ===== */
+            /* ===== Cards ===== */
             .cards-grid {
+                grid-template-columns: 1fr;
                 gap: 14px;
             }
 
             .card {
-                padding: 20px 16px;
+                padding: 22px 18px;
             }
 
             .card-icon {
@@ -1832,31 +2015,29 @@
                 margin-bottom: 14px;
                 border-radius: 18px;
             }
-
             .card-icon svg {
-                width: 26px;
-                height: 26px;
+                width: 24px;
+                height: 24px;
             }
 
             .card h3 {
                 font-size: 0.95rem;
                 margin-bottom: 8px;
             }
-
             .card p {
-                font-size: 0.82rem;
+                font-size: 0.83rem;
                 line-height: 1.65;
             }
 
-            /* ===== من نحن ===== */
-            .about-grid {
-                gap: 22px;
+            .service-card {
+                padding: 22px 18px;
+                text-align: right;
             }
 
-            .about-image {
-                border-radius: var(--radius-md);
-            }
+            /* ===== About ===== */
+            .about-grid { gap: 22px; }
 
+            .about-image { border-radius: var(--radius-md); }
             .about-image img {
                 min-height: 220px;
                 max-height: 300px;
@@ -1867,156 +2048,121 @@
                 padding: 7px 14px;
                 bottom: 12px;
                 right: 12px;
+                gap: 5px;
             }
+            .about-badge svg { width: 13px; height: 13px; }
 
             .about-content .section-title {
-                font-size: 1.2rem;
+                font-size: clamp(1.1rem, 4.5vw, 1.3rem);
                 margin-bottom: 12px;
             }
-
             .about-lead {
-                font-size: 0.98rem;
+                font-size: 0.95rem;
                 margin-bottom: 12px;
+                line-height: 1.6;
             }
-
             .about-content p {
                 font-size: 0.85rem;
                 line-height: 1.75;
                 margin-bottom: 10px;
             }
 
-            /* ===== الخط الزمني ===== */
-            .timeline {
-                padding-right: 12px;
-            }
-
-            .timeline::before {
-                right: 6px;
-                width: 2px;
-            }
-
+            /* ===== Timeline ===== */
+            .timeline { padding-right: 14px; }
+            .timeline::before { right: 5px; width: 2px; }
             .timeline-item {
-                padding-right: 32px;
+                padding-right: 34px;
                 margin-bottom: 18px;
             }
-
             .timeline-dot {
                 width: 16px;
                 height: 16px;
                 border-width: 3px;
                 top: 4px;
             }
-
             .timeline-content {
                 padding: 14px 16px;
                 border-right-width: 3px;
             }
-
             .timeline-content:hover {
                 transform: translateX(-4px);
             }
-
             .timeline-content h3 {
                 font-size: 0.85rem;
                 line-height: 1.5;
             }
-
             .timeline-year {
-                font-size: 0.68rem;
+                font-size: 0.66rem;
                 margin-bottom: 6px;
             }
+            .timeline-year svg { width: 12px; height: 12px; }
 
-            .timeline-year svg {
-                width: 12px;
-                height: 12px;
-            }
-
-            /* ===== قسم الجودة ===== */
+            /* ===== Quality Section ===== */
             .about-lead[data-i18n="quality_text"] {
-                font-size: 1rem !important;
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
                 margin-bottom: 20px !important;
-                line-height: 1.8 !important;
             }
 
-            /* ===== معرض الصور ===== */
+            /* ===== Gallery ===== */
             .gallery-grid {
-                gap: 6px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
+            .gallery-item { border-radius: 8px; }
 
-            .gallery-item {
-                border-radius: 6px;
-            }
-
-            /* ===== تواصل معنا ===== */
-            .contact-grid {
-                gap: 22px;
-            }
-
-            .contact-info {
-                gap: 12px;
-            }
+            /* ===== Contact ===== */
+            .contact-grid { gap: 22px; }
+            .contact-info { gap: 12px; }
 
             .contact-item {
                 padding: 14px 16px;
                 gap: 12px;
             }
-
             .contact-icon {
                 width: 40px;
                 height: 40px;
                 border-radius: 12px;
             }
-
             .contact-icon svg {
                 width: 18px;
                 height: 18px;
             }
-
             .contact-item h3 {
-                font-size: 0.8rem;
-                margin-bottom: 3px;
+                font-size: 0.82rem;
+                margin-bottom: 4px;
             }
-
             .contact-item a,
             .contact-item p {
-                font-size: 0.85rem;
+                font-size: 0.84rem;
             }
 
-            .contact-map iframe {
-                height: 220px;
-            }
+            .contact-map iframe { height: 220px; }
 
-            /* ===== الفوتر ===== */
+            /* ===== Footer ===== */
             .footer {
-                padding: 35px 0 0;
+                padding: 40px 0 0;
                 margin-top: 30px;
             }
-
             .footer-grid {
-                gap: 25px;
-                padding-bottom: 25px;
+                gap: 26px;
+                padding-bottom: 26px;
             }
-
             .footer-about img.footer-logo {
                 height: 55px;
                 margin-bottom: 15px;
             }
-
             .footer-about p {
                 font-size: 0.85rem;
-                line-height: 1.75;
+                line-height: 1.7;
             }
-
             .footer-capital {
-                font-size: 0.75rem;
+                font-size: 0.74rem;
                 padding: 10px 14px;
                 margin-top: 12px;
+                gap: 6px;
             }
-
-            .footer-capital svg {
-                width: 16px;
-                height: 16px;
-            }
+            .footer-capital svg { width: 14px; height: 14px; }
 
             .footer-links h3,
             .footer-contact h3 {
@@ -2024,61 +2170,48 @@
                 margin-bottom: 14px;
                 padding-bottom: 8px;
             }
-
             .footer-links h3 svg,
             .footer-contact h3 svg {
                 width: 16px;
                 height: 16px;
             }
-
             .footer-links a,
             .footer-contact p {
                 font-size: 0.85rem;
             }
-
-            .footer-contact p svg {
-                width: 14px;
-                height: 14px;
+            .footer-contact p svg { width: 14px; height: 14px; }
+            .footer-map-link {
+                font-size: 0.78rem;
+                padding: 7px 14px;
             }
-
             .footer-bottom {
                 padding: 14px 0;
                 font-size: 0.78rem;
             }
 
-            .footer-bottom p:last-child {
-                font-size: 0.75rem !important;
-            }
-
-            /* ===== الأزرار العائمة ===== */
+            /* ===== Floating Buttons ===== */
             .floating-buttons {
                 bottom: 12px;
                 left: 12px;
                 gap: 8px;
             }
-
             .floating-btn {
-                width: 44px;
-                height: 44px;
+                width: 42px;
+                height: 42px;
             }
-
             .floating-btn svg {
-                width: 20px;
-                height: 20px;
+                width: 18px;
+                height: 18px;
             }
+            .lang-float-btn { font-size: 0.68rem; }
 
-            .lang-float-btn {
-                font-size: 0.7rem;
-            }
-
-            /* ===== زر العودة للأعلى ===== */
+            /* ===== Back to Top ===== */
             .back-to-top {
                 width: 40px;
                 height: 40px;
                 bottom: 12px;
                 right: 12px;
             }
-
             .back-to-top svg {
                 width: 18px;
                 height: 18px;
@@ -2089,54 +2222,110 @@
                 width: 38px;
                 height: 38px;
             }
-
-            .lightbox-nav svg {
-                width: 20px;
-                height: 20px;
-            }
-
+            .lightbox-nav svg { width: 18px; height: 18px; }
             .lightbox-close {
                 width: 36px;
                 height: 36px;
-                top: -45px;
+                top: -44px;
+            }
+            .lightbox-close svg { width: 16px; height: 16px; }
+            .lightbox-counter {
+                font-size: 0.78rem;
+                bottom: -32px;
             }
 
-            .lightbox-close svg {
-                width: 18px;
-                height: 18px;
+            /* ===== RTL adjustments for mobile ===== */
+            html[dir="ltr"] .floating-buttons {
+                left: auto; right: 12px;
+            }
+            html[dir="ltr"] .back-to-top {
+                right: auto; left: 12px;
             }
         }
 
-        /* ===== Responsive - Very Small Mobile ===== */
+        /* ============================================================
+           MOBILE - Very Small (max-width: 380px)
+           ============================================================ */
         @media (max-width: 380px) {
-            :root { --header-height: 60px; }
+            :root { --header-height: 58px; }
             .container { padding: 0 12px; }
+            .section { padding: 38px 0; }
 
-            .logo-img { height: 42px; }
-            .logo-text .logo-main { font-size: 0.82rem; }
+            .logo-img { height: 38px; }
+            .logo-text .logo-main { font-size: 0.78rem; }
+
+            .lang-toggle-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.64rem;
+            }
+            .hamburger {
+                width: 32px;
+                height: 32px;
+            }
+            .hamburger span { width: 14px; }
 
             .hero-title { font-size: 1.35rem; }
-            .hero-subtitle { font-size: 0.85rem; }
+            .hero-subtitle { font-size: 0.82rem; }
             .hero-desc { font-size: 0.8rem; }
+
+            .hero-buttons .btn {
+                padding: 11px 18px;
+                font-size: 0.82rem;
+            }
 
             .section-title { font-size: 1.2rem; }
 
-            .btn {
-                padding: 10px 18px;
-                font-size: 0.78rem;
-                min-width: 105px;
+            .card { padding: 20px 16px; }
+            .card-icon {
+                width: 48px;
+                height: 48px;
             }
+            .card-icon svg { width: 22px; height: 22px; }
+
+            .contact-icon {
+                width: 38px;
+                height: 38px;
+            }
+            .contact-icon svg { width: 16px; height: 16px; }
+
+            .gallery-grid { gap: 6px; }
 
             .floating-btn {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
             }
+            .floating-btn svg { width: 16px; height: 16px; }
 
-            .floating-btn svg { width: 18px; height: 18px; }
+            .back-to-top {
+                width: 36px;
+                height: 36px;
+            }
+            .back-to-top svg { width: 16px; height: 16px; }
+        }
+
+        /* ============================================================
+           Prevent any horizontal overflow
+           ============================================================ */
+        img, video, iframe, svg, table, pre, code {
+            max-width: 100%;
+        }
+
+        iframe {
+            max-width: 100% !important;
+        }
+
+        /* Ensure grid/flex children don't overflow */
+        .cards-grid > *,
+        .gallery-grid > *,
+        .contact-grid > *,
+        .footer-grid > *,
+        .about-grid > * {
+            min-width: 0;
         }
 
         /* ===== Scrollbar ===== */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--cream); }
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(var(--green), var(--gold));
@@ -2144,49 +2333,10 @@
         }
         ::-webkit-scrollbar-thumb:hover { background: var(--green-dark); }
 
-        /* ===== زر العودة للأعلى ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--green-dark), var(--green));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: var(--transition);
-            z-index: 900;
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: var(--shadow-lg);
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        /* ===== Selection ===== */
+        ::selection {
+            background: var(--gold);
             color: var(--green-dark);
-        }
-
-        .back-to-top svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        html[dir="ltr"] .back-to-top {
-            right: auto;
-            left: 20px;
         }
     </style>
 </head>
@@ -2354,7 +2504,7 @@
             </div>
 
             <!-- الخط الزمني -->
-            <div style="margin-top: 50px;">
+            <div style="margin-top: 60px;">
                 <div class="section-header reveal fade-up">
                     <span class="section-label" data-i18n="story_label">قصتنا</span>
                     <h2 class="section-title" data-i18n="story_title">قصتنا تبدأ من <span class="highlight-gold">الطبيعة</span></h2>
@@ -2444,24 +2594,24 @@
             </div>
         </div>
 
-        <!-- الجودة (بدون صورة - تصميم مركزي) -->
-        <div class="container" style="margin-top: 50px;">
+        <!-- الجودة -->
+        <div class="container" style="margin-top: 60px;">
             <div class="section-header reveal fade-up">
                 <span class="section-label" data-i18n="quality_label">الجودة</span>
                 <h2 class="section-title" data-i18n="quality_title">نبدأ من أعلى معايير الجودة</h2>
             </div>
             <div class="reveal fade-up delay-1" style="max-width: 750px; margin: 0 auto; text-align: center;">
-                <p class="about-lead" data-i18n="quality_text" style="font-size: 1.2rem; margin-bottom: 30px; line-height: 1.9;">في <span class="highlight-gold">اثير الطبيعة</span>، الجودة ليست خيارًا، بل هي أساس كل خطوة نخطوها.</p>
+                <p class="about-lead" data-i18n="quality_text" style="font-size: 1.1rem; margin-bottom: 26px; line-height: 1.8;">في <span class="highlight-gold">اثير الطبيعة</span>، الجودة ليست خيارًا، بل هي أساس كل خطوة نخطوها.</p>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 20px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
+                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 18px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
                         <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator1">جودة عالية</span>
                     </span>
-                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 20px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
+                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 18px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
                         <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator2">مصادر طبيعية موثوقة</span>
                     </span>
-                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 20px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
+                    <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 18px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
                         <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator3">اختيار دقيق</span>
                     </span>
@@ -2523,7 +2673,7 @@
                     </a>
                 </div>
                 <div class="contact-map reveal fade-left delay-1">
-                    <iframe src="https://maps.google.com/maps?q=%D8%B7%D8%B1%D8%A7%D8%A8%D9%84%D8%B3%20%D9%84%D9%8A%D8%A8%D9%8A%D8%A7&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="320" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy" title="موقع شركة اثير الطبيعة"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=%D8%B7%D8%B1%D8%A7%D8%A8%D9%84%D8%B3%20%D9%84%D9%8A%D8%A8%D9%8A%D8%A7&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="280" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy" title="موقع شركة اثير الطبيعة"></iframe>
                 </div>
             </div>
         </div>
