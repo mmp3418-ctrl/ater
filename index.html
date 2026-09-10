@@ -297,10 +297,69 @@
             box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
         }
 
+        /* ===== شريط رأس المال (في الأعلى - واضح وبارز) ===== */
+        .capital-banner {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1001;
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--gold) 100%);
+            color: var(--white);
+            padding: 8px 16px;
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 12px rgba(15, 76, 48, 0.25);
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .capital-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .capital-banner svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: var(--gold-light);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .capital-banner .capital-label {
+            font-size: 0.78rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .capital-banner .capital-value {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
         /* ===== الهيدر ===== */
         .header {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 38px;
+            left: 0; right: 0;
             z-index: 1000;
             background: rgba(250, 248, 238, 0.85);
             backdrop-filter: blur(25px) saturate(200%);
@@ -417,10 +476,10 @@
         }
 
         .nav-link svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             transition: var(--transition);
-            opacity: 0.7;
+            flex-shrink: 0;
         }
 
         .nav-link::after {
@@ -448,9 +507,7 @@
 
         .nav-link:hover svg,
         .nav-link.active svg {
-            opacity: 1;
             transform: scale(1.15);
-            color: var(--gold);
         }
 
         .header-actions {
@@ -548,7 +605,7 @@
 
         .mobile-menu {
             position: fixed;
-            top: var(--header-height);
+            top: calc(var(--header-height) + 38px);
             left: 0; right: 0;
             background: rgba(250, 248, 238, 0.98);
             backdrop-filter: blur(25px) saturate(200%);
@@ -585,9 +642,8 @@
         }
 
         .mobile-nav-link svg {
-            width: 20px;
-            height: 20px;
-            color: var(--gold);
+            width: 22px;
+            height: 22px;
             transition: var(--transition);
             flex-shrink: 0;
         }
@@ -602,7 +658,7 @@
 
         .mobile-nav-link:hover svg,
         .mobile-nav-link.active svg {
-            transform: scale(1.2) rotate(-5deg);
+            transform: scale(1.15);
         }
 
         /* ===== الهيرو ===== */
@@ -616,32 +672,27 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: calc(var(--header-height) + 40px) 0 60px;
+            padding: calc(var(--header-height) + 70px) 0 60px;
         }
 
-        .hero-bg {
+        .hero-video {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: 0;
-            animation: heroZoom 25s ease-in-out infinite alternate;
-        }
-
-        @keyframes heroZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.12); }
+            pointer-events: none;
         }
 
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(135deg,
-                rgba(15, 76, 48, 0.9) 0%,
-                rgba(45, 128, 65, 0.75) 35%,
-                rgba(234, 162, 34, 0.6) 70%,
-                rgba(15, 76, 48, 0.88) 100%);
+                rgba(15, 76, 48, 0.88) 0%,
+                rgba(45, 128, 65, 0.72) 35%,
+                rgba(234, 162, 34, 0.55) 70%,
+                rgba(15, 76, 48, 0.85) 100%);
             z-index: 1;
         }
 
@@ -823,51 +874,69 @@
         }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(234, 162, 34, 0.15), rgba(45, 128, 65, 0.1));
             border-radius: 20px;
             transition: var(--transition-bounce);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(234, 162, 34, 0.15);
             flex-shrink: 0;
+        }
+
+        /* ألوان أيقونات البطاقات - متناسقة مع الواتساب */
+        .card-icon.icon-green {
+            background: linear-gradient(135deg, #25D366, #1da851);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .card-icon.icon-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            box-shadow: 0 6px 20px rgba(234, 162, 34, 0.3);
+        }
+
+        .card-icon.icon-blue {
+            background: linear-gradient(135deg, var(--blue), #4a9fc0);
+            box-shadow: 0 6px 20px rgba(122, 196, 224, 0.3);
+        }
+
+        .card-icon.icon-dark-green {
+            background: linear-gradient(135deg, var(--green-dark), var(--green));
+            box-shadow: 0 6px 20px rgba(15, 76, 48, 0.3);
         }
 
         .card-icon::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--gold), var(--green));
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
             opacity: 0;
             transition: var(--transition);
             border-radius: inherit;
         }
 
         .card-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--gold);
+            width: 32px;
+            height: 32px;
+            color: var(--white);
             transition: var(--transition);
             position: relative;
             z-index: 1;
             stroke-width: 1.8;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
 
         .card:hover .card-icon {
             transform: scale(1.12) rotate(-8deg);
             border-radius: 26px;
-            box-shadow: 0 8px 25px rgba(234, 162, 34, 0.3);
         }
 
         .card:hover .card-icon::before { opacity: 1; }
 
         .card:hover .card-icon svg {
-            color: var(--white);
             transform: scale(1.1);
         }
 
@@ -897,7 +966,6 @@
 
         .service-card .card-icon {
             margin: 0 0 16px 0;
-            justify-content: flex-start;
         }
 
         /* ===== من نحن ===== */
@@ -1076,9 +1144,10 @@
         }
 
         .timeline-year svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             flex-shrink: 0;
+            color: var(--gold);
         }
 
         .timeline-content h3 {
@@ -1183,7 +1252,6 @@
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             border: 1px solid rgba(255,255,255,0.6);
-            border-right: 4px solid transparent;
             width: 100%;
             max-width: 100%;
         }
@@ -1191,38 +1259,49 @@
         .contact-item:hover {
             box-shadow: var(--shadow-md);
             transform: translateY(-5px);
-            border-right-color: var(--gold);
             background: rgba(255, 255, 255, 0.95);
         }
 
+        /* أيقونات تواصل بألوان متناسقة */
         .contact-icon {
-            width: 46px;
-            height: 46px;
+            width: 50px;
+            height: 50px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(234, 162, 34, 0.15), rgba(45, 128, 65, 0.1));
             border-radius: 14px;
             transition: var(--transition-bounce);
-            border: 1px solid rgba(234, 162, 34, 0.15);
+            position: relative;
+        }
+
+        .contact-icon.icon-green {
+            background: linear-gradient(135deg, #25D366, #1da851);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-icon.icon-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            box-shadow: 0 4px 15px rgba(234, 162, 34, 0.3);
+        }
+
+        .contact-icon.icon-blue {
+            background: linear-gradient(135deg, var(--blue), #4a9fc0);
+            box-shadow: 0 4px 15px rgba(122, 196, 224, 0.3);
         }
 
         .contact-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--gold);
+            width: 24px;
+            height: 24px;
+            color: var(--white);
             transition: var(--transition);
             stroke-width: 1.8;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
 
         .contact-item:hover .contact-icon {
-            background: linear-gradient(135deg, var(--gold), var(--green));
             transform: rotate(-10deg) scale(1.1);
-            box-shadow: 0 8px 25px rgba(234, 162, 34, 0.3);
         }
-
-        .contact-item:hover .contact-icon svg { color: var(--white); }
 
         .contact-item > div {
             min-width: 0;
@@ -1315,28 +1394,41 @@
             overflow-wrap: break-word;
         }
 
+        /* بطاقة رأس المال في الفوتر - بارزة وواضحة */
         .footer-capital {
-            margin-top: 15px;
-            padding: 12px 16px;
-            background: rgba(234, 162, 34, 0.12);
-            border: 1px solid rgba(234, 162, 34, 0.3);
-            border-radius: var(--radius-sm);
+            margin-top: 18px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(234, 162, 34, 0.2), rgba(45, 128, 65, 0.15));
+            border: 2px solid rgba(234, 162, 34, 0.5);
+            border-radius: var(--radius-md);
             font-family: var(--font-heading);
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 0.88rem;
+            font-weight: 700;
             color: var(--gold-light);
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             max-width: 100%;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-capital::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(234, 162, 34, 0.2), transparent);
+            animation: shine 3s infinite;
         }
 
         .footer-capital svg {
-            width: 16px;
-            height: 16px;
+            width: 22px;
+            height: 22px;
             flex-shrink: 0;
+            color: var(--gold-light);
         }
 
         .footer-links h3,
@@ -1354,9 +1446,8 @@
 
         .footer-links h3 svg,
         .footer-contact h3 svg {
-            width: 18px;
-            height: 18px;
-            color: var(--gold);
+            width: 20px;
+            height: 20px;
             flex-shrink: 0;
         }
 
@@ -1389,10 +1480,8 @@
         }
 
         .footer-links a svg {
-            width: 14px;
-            height: 14px;
-            color: var(--gold);
-            transition: var(--transition);
+            width: 16px;
+            height: 16px;
             flex-shrink: 0;
         }
 
@@ -1416,11 +1505,10 @@
         }
 
         .footer-contact p svg {
-            width: 16px;
-            height: 16px;
-            color: var(--gold);
+            width: 18px;
+            height: 18px;
             flex-shrink: 0;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         .footer-contact a {
@@ -1436,20 +1524,20 @@
             align-items: center;
             gap: 8px;
             margin-top: 10px;
-            padding: 8px 18px;
+            padding: 10px 18px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-full);
             font-family: var(--font-heading);
             font-size: 0.82rem;
             font-weight: 600;
             transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
             max-width: 100%;
         }
 
         .footer-map-link svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             flex-shrink: 0;
         }
 
@@ -1483,8 +1571,8 @@
         }
 
         .floating-btn {
-            width: 46px;
-            height: 46px;
+            width: 50px;
+            height: 50px;
             border-radius: var(--radius-full);
             display: flex;
             align-items: center;
@@ -1494,13 +1582,12 @@
             font-family: var(--font-heading);
             font-weight: 700;
             font-size: 0.8rem;
-            backdrop-filter: blur(10px);
             flex-shrink: 0;
         }
 
         .floating-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
 
         .floating-btn:hover {
@@ -1509,22 +1596,24 @@
         }
 
         .whatsapp-btn {
-            background: rgba(37, 211, 102, 0.95);
+            background: linear-gradient(135deg, #25D366, #1da851);
             color: var(--white);
-            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
-        .whatsapp-btn:hover { background: #25D366; }
+        .whatsapp-btn:hover { 
+            background: linear-gradient(135deg, #1da851, #128C4B);
+        }
 
         .lang-float-btn {
-            background: rgba(15, 76, 48, 0.9);
+            background: linear-gradient(135deg, var(--green-dark), var(--green));
             color: var(--white);
             border: 2px solid var(--gold);
-            font-size: 0.72rem;
+            font-size: 0.75rem;
         }
 
         .lang-float-btn:hover {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--green-dark);
         }
 
@@ -1627,47 +1716,6 @@
             font-weight: 600;
         }
 
-        /* ===== زر العودة للأعلى ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 16px;
-            right: 16px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--green-dark), var(--green));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: var(--transition);
-            z-index: 900;
-            border: 2px solid rgba(255,255,255,0.2);
-            flex-shrink: 0;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: var(--shadow-lg);
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--green-dark);
-        }
-
-        .back-to-top svg {
-            width: 20px;
-            height: 20px;
-        }
-
         /* ===== Reveal Animations ===== */
         .reveal {
             opacity: 0;
@@ -1724,11 +1772,6 @@
 
         html[dir="ltr"] .contact-item {
             border-right: none;
-            border-left: 4px solid transparent;
-        }
-
-        html[dir="ltr"] .contact-item:hover {
-            border-left-color: var(--gold);
         }
 
         html[dir="ltr"] .service-card { text-align: left; }
@@ -1779,6 +1822,13 @@
             .section { padding: 80px 0; }
             .section-title { font-size: 2.2rem; }
 
+            .capital-banner { font-size: 0.9rem; padding: 10px 20px; }
+            .capital-banner svg { width: 20px; height: 20px; }
+            .capital-banner .capital-label { font-size: 0.82rem; }
+            .capital-banner .capital-value { font-size: 1.1rem; }
+
+            .header { top: 44px; }
+
             .logo-img { height: 62px; }
             .logo-text .logo-main { font-size: 1.1rem; }
             .logo-text .logo-sub { font-size: 0.65rem; }
@@ -1820,6 +1870,13 @@
             .section { padding: 95px 0; }
             .section-title { font-size: 2.5rem; }
 
+            .capital-banner { font-size: 0.95rem; padding: 12px 24px; }
+            .capital-banner svg { width: 22px; height: 22px; }
+            .capital-banner .capital-label { font-size: 0.88rem; }
+            .capital-banner .capital-value { font-size: 1.15rem; }
+
+            .header { top: 50px; }
+
             .main-nav { display: block; }
             .hamburger { display: none; }
             .mobile-menu { display: none; }
@@ -1852,19 +1909,19 @@
             }
 
             .floating-btn {
-                width: 50px;
-                height: 50px;
+                width: 54px;
+                height: 54px;
                 font-size: 0.85rem;
             }
 
             .floating-btn svg {
-                width: 22px;
-                height: 22px;
+                width: 26px;
+                height: 26px;
             }
 
             .back-to-top {
-                width: 46px;
-                height: 46px;
+                width: 48px;
+                height: 48px;
                 bottom: 20px;
                 right: 20px;
             }
@@ -1895,12 +1952,10 @@
 
         /* ============================================================
            MOBILE - Small Screens (max-width: 767px)
-           True Mobile Layout - Not just a shrunk Desktop
            ============================================================ */
         @media (max-width: 767px) {
             :root { --header-height: 62px; }
 
-            /* ===== Base ===== */
             .container { padding: 0 14px; }
             .section { padding: 45px 0; }
             .section-header { margin-bottom: 28px; }
@@ -1918,7 +1973,21 @@
             .section-label::before { right: -25px; }
             .section-label::after { left: -25px; }
 
-            /* ===== Header ===== */
+            /* Capital Banner Mobile */
+            .capital-banner {
+                font-size: 0.72rem;
+                padding: 7px 12px;
+                gap: 6px;
+            }
+            .capital-banner svg { width: 15px; height: 15px; }
+            .capital-banner .capital-label { 
+                font-size: 0.68rem;
+                display: none;
+            }
+            .capital-banner .capital-value { font-size: 0.85rem; }
+
+            .header { top: 32px; }
+
             .header-container { gap: 6px; }
             .logo { gap: 6px; min-width: 0; flex: 1 1 auto; }
             .logo-img { height: 42px; }
@@ -1941,15 +2010,13 @@
             }
             .hamburger span { width: 16px; }
 
-            /* ===== Hero ===== */
+            /* Hero */
             .hero {
                 min-height: auto;
-                padding: calc(var(--header-height) + 40px) 0 60px;
+                padding: calc(var(--header-height) + 80px) 0 60px;
             }
 
-            .hero-content {
-                padding: 0 4px;
-            }
+            .hero-content { padding: 0 4px; }
 
             .hero-badge {
                 font-size: 0.68rem;
@@ -1966,7 +2033,6 @@
                 font-size: clamp(1.4rem, 6.5vw, 1.85rem);
                 line-height: 1.3;
                 margin-bottom: 12px;
-                letter-spacing: -0.5px;
             }
 
             .hero-subtitle {
@@ -1995,29 +2061,23 @@
                 font-size: 0.85rem;
             }
 
-            .hero-scroll-indicator {
-                bottom: 15px;
-            }
-
-            /* ===== Cards ===== */
+            /* Cards */
             .cards-grid {
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
 
-            .card {
-                padding: 22px 18px;
-            }
+            .card { padding: 22px 18px; }
 
             .card-icon {
-                width: 52px;
-                height: 52px;
+                width: 56px;
+                height: 56px;
                 margin-bottom: 14px;
                 border-radius: 18px;
             }
             .card-icon svg {
-                width: 24px;
-                height: 24px;
+                width: 28px;
+                height: 28px;
             }
 
             .card h3 {
@@ -2031,12 +2091,10 @@
 
             .service-card {
                 padding: 22px 18px;
-                text-align: right;
             }
 
-            /* ===== About ===== */
+            /* About */
             .about-grid { gap: 22px; }
-
             .about-image { border-radius: var(--radius-md); }
             .about-image img {
                 min-height: 220px;
@@ -2067,7 +2125,7 @@
                 margin-bottom: 10px;
             }
 
-            /* ===== Timeline ===== */
+            /* Timeline */
             .timeline { padding-right: 14px; }
             .timeline::before { right: 5px; width: 2px; }
             .timeline-item {
@@ -2095,23 +2153,16 @@
                 font-size: 0.66rem;
                 margin-bottom: 6px;
             }
-            .timeline-year svg { width: 12px; height: 12px; }
+            .timeline-year svg { width: 14px; height: 14px; }
 
-            /* ===== Quality Section ===== */
-            .about-lead[data-i18n="quality_text"] {
-                font-size: 0.95rem !important;
-                line-height: 1.7 !important;
-                margin-bottom: 20px !important;
-            }
-
-            /* ===== Gallery ===== */
+            /* Gallery */
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
             }
             .gallery-item { border-radius: 8px; }
 
-            /* ===== Contact ===== */
+            /* Contact */
             .contact-grid { gap: 22px; }
             .contact-info { gap: 12px; }
 
@@ -2120,13 +2171,13 @@
                 gap: 12px;
             }
             .contact-icon {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
                 border-radius: 12px;
             }
             .contact-icon svg {
-                width: 18px;
-                height: 18px;
+                width: 22px;
+                height: 22px;
             }
             .contact-item h3 {
                 font-size: 0.82rem;
@@ -2139,7 +2190,7 @@
 
             .contact-map iframe { height: 220px; }
 
-            /* ===== Footer ===== */
+            /* Footer */
             .footer {
                 padding: 40px 0 0;
                 margin-top: 30px;
@@ -2156,13 +2207,16 @@
                 font-size: 0.85rem;
                 line-height: 1.7;
             }
+
+            /* Footer Capital Mobile */
             .footer-capital {
-                font-size: 0.74rem;
-                padding: 10px 14px;
-                margin-top: 12px;
-                gap: 6px;
+                font-size: 0.82rem;
+                padding: 14px 16px;
+                margin-top: 15px;
+                gap: 10px;
+                border-width: 2px;
             }
-            .footer-capital svg { width: 14px; height: 14px; }
+            .footer-capital svg { width: 20px; height: 20px; }
 
             .footer-links h3,
             .footer-contact h3 {
@@ -2172,52 +2226,52 @@
             }
             .footer-links h3 svg,
             .footer-contact h3 svg {
-                width: 16px;
-                height: 16px;
+                width: 18px;
+                height: 18px;
             }
             .footer-links a,
             .footer-contact p {
                 font-size: 0.85rem;
             }
-            .footer-contact p svg { width: 14px; height: 14px; }
+            .footer-contact p svg { width: 16px; height: 16px; }
             .footer-map-link {
                 font-size: 0.78rem;
-                padding: 7px 14px;
+                padding: 8px 16px;
             }
             .footer-bottom {
                 padding: 14px 0;
                 font-size: 0.78rem;
             }
 
-            /* ===== Floating Buttons ===== */
+            /* Floating Buttons */
             .floating-buttons {
                 bottom: 12px;
                 left: 12px;
                 gap: 8px;
             }
             .floating-btn {
-                width: 42px;
-                height: 42px;
+                width: 46px;
+                height: 46px;
             }
             .floating-btn svg {
-                width: 18px;
-                height: 18px;
+                width: 22px;
+                height: 22px;
             }
-            .lang-float-btn { font-size: 0.68rem; }
+            .lang-float-btn { font-size: 0.7rem; }
 
-            /* ===== Back to Top ===== */
+            /* Back to Top */
             .back-to-top {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
                 bottom: 12px;
                 right: 12px;
             }
             .back-to-top svg {
-                width: 18px;
-                height: 18px;
+                width: 20px;
+                height: 20px;
             }
 
-            /* ===== Lightbox ===== */
+            /* Lightbox */
             .lightbox-nav {
                 width: 38px;
                 height: 38px;
@@ -2234,7 +2288,6 @@
                 bottom: -32px;
             }
 
-            /* ===== RTL adjustments for mobile ===== */
             html[dir="ltr"] .floating-buttons {
                 left: auto; right: 12px;
             }
@@ -2250,6 +2303,16 @@
             :root { --header-height: 58px; }
             .container { padding: 0 12px; }
             .section { padding: 38px 0; }
+
+            .capital-banner {
+                font-size: 0.68rem;
+                padding: 6px 10px;
+                gap: 5px;
+            }
+            .capital-banner svg { width: 13px; height: 13px; }
+            .capital-banner .capital-value { font-size: 0.78rem; }
+
+            .header { top: 28px; }
 
             .logo-img { height: 38px; }
             .logo-text .logo-main { font-size: 0.78rem; }
@@ -2278,30 +2341,36 @@
 
             .card { padding: 20px 16px; }
             .card-icon {
-                width: 48px;
-                height: 48px;
+                width: 50px;
+                height: 50px;
             }
-            .card-icon svg { width: 22px; height: 22px; }
+            .card-icon svg { width: 24px; height: 24px; }
 
             .contact-icon {
-                width: 38px;
-                height: 38px;
+                width: 40px;
+                height: 40px;
             }
-            .contact-icon svg { width: 16px; height: 16px; }
+            .contact-icon svg { width: 20px; height: 20px; }
 
             .gallery-grid { gap: 6px; }
 
-            .floating-btn {
-                width: 38px;
-                height: 38px;
+            .footer-capital {
+                font-size: 0.78rem;
+                padding: 12px 14px;
             }
-            .floating-btn svg { width: 16px; height: 16px; }
+            .footer-capital svg { width: 18px; height: 18px; }
+
+            .floating-btn {
+                width: 42px;
+                height: 42px;
+            }
+            .floating-btn svg { width: 20px; height: 20px; }
 
             .back-to-top {
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
             }
-            .back-to-top svg { width: 16px; height: 16px; }
+            .back-to-top svg { width: 18px; height: 18px; }
         }
 
         /* ============================================================
@@ -2315,7 +2384,6 @@
             max-width: 100% !important;
         }
 
-        /* Ensure grid/flex children don't overflow */
         .cards-grid > *,
         .gallery-grid > *,
         .contact-grid > *,
@@ -2333,7 +2401,6 @@
         }
         ::-webkit-scrollbar-thumb:hover { background: var(--green-dark); }
 
-        /* ===== Selection ===== */
         ::selection {
             background: var(--gold);
             color: var(--green-dark);
@@ -2341,6 +2408,16 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== شريط رأس المال (في الأعلى) ===== -->
+    <div class="capital-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+        <span class="capital-label" data-i18n="capital_label">رأس مال الشركة:</span>
+        <span class="capital-value" data-i18n="capital_value">30,000,000 دينار ليبي</span>
+    </div>
 
     <!-- ===== الشريط العلوي ===== -->
     <header class="header" id="header">
@@ -2388,32 +2465,35 @@
         <div class="mobile-menu" id="mobileMenu">
             <ul class="mobile-nav-list">
                 <li><a href="#home" class="mobile-nav-link active" data-section="home">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     <span data-i18n="nav_home">الرئيسية</span>
                 </a></li>
                 <li><a href="#about" class="mobile-nav-link" data-section="about">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#EAA222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                     <span data-i18n="nav_about">من نحن</span>
                 </a></li>
                 <li><a href="#services" class="mobile-nav-link" data-section="services">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/><path d="m4.22 4.22 4.24 4.24m3.08 3.08 4.24 4.24"/><path d="M1 12h6m6 0h6"/><path d="m4.22 19.78 4.24-4.24m3.08-3.08 4.24-4.24"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7AC4E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6"/><path d="m4.22 4.22 4.24 4.24m3.08 3.08 4.24 4.24"/><path d="M1 12h6m6 0h6"/><path d="m4.22 19.78 4.24-4.24m3.08-3.08 4.24-4.24"/></svg>
                     <span data-i18n="nav_services">خدماتنا</span>
                 </a></li>
                 <li><a href="#gallery" class="mobile-nav-link" data-section="gallery">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2D8041" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                     <span data-i18n="nav_gallery">معرض الصور</span>
                 </a></li>
                 <li><a href="#contact" class="mobile-nav-link" data-section="contact">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     <span data-i18n="nav_contact">تواصل معنا</span>
                 </a></li>
             </ul>
         </div>
     </header>
 
-    <!-- ===== القسم الرئيسي (Hero) ===== -->
+    <!-- ===== القسم الرئيسي (Hero مع فيديو) ===== -->
     <section class="hero" id="home">
-        <div class="hero-bg" style="background-image: url('j3.jpeg');"></div>
+        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+            <source src="vo1.mp4" type="video/mp4">
+            <source src="vo1.webm" type="video/webm">
+        </video>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <span class="hero-badge">
@@ -2448,28 +2528,28 @@
             </div>
             <div class="cards-grid">
                 <div class="card reveal fade-up">
-                    <div class="card-icon">
+                    <div class="card-icon icon-gold">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg>
                     </div>
                     <h3 data-i18n="why_card1_title">جودة استثنائية</h3>
                     <p data-i18n="why_card1_text">نختار موادنا بعناية فائقة وفق معايير جودة عالية.</p>
                 </div>
                 <div class="card reveal fade-up delay-1">
-                    <div class="card-icon">
+                    <div class="card-icon icon-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
                     <h3 data-i18n="why_card2_title">مصادر طبيعية</h3>
                     <p data-i18n="why_card2_text">نتعامل مع أفضل المزارع والموردين للمواد الطبيعية.</p>
                 </div>
                 <div class="card reveal fade-up delay-2">
-                    <div class="card-icon">
+                    <div class="card-icon icon-blue">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
                     <h3 data-i18n="why_card3_title">خبرة صناعية</h3>
                     <p data-i18n="why_card3_text">نستفيد من الخبرة العريقة في صناعة الأعلاف والمطاحن.</p>
                 </div>
                 <div class="card reveal fade-up delay-3">
-                    <div class="card-icon">
+                    <div class="card-icon icon-dark-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
                     </div>
                     <h3 data-i18n="why_card4_title">اختيار دقيق</h3>
@@ -2564,28 +2644,28 @@
             </div>
             <div class="cards-grid">
                 <div class="card service-card reveal fade-up">
-                    <div class="card-icon">
+                    <div class="card-icon icon-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
                     <h3 data-i18n="service1_title">صناعة الأعلاف</h3>
                     <p data-i18n="service1_text">تصنيع أعلاف عالية الجودة من مواد <span class="highlight-green">طبيعية</span> مختارة بعناية.</p>
                 </div>
                 <div class="card service-card reveal fade-up delay-1">
-                    <div class="card-icon">
+                    <div class="card-icon icon-gold">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
                     </div>
                     <h3 data-i18n="service2_title">منتجات المطاحن</h3>
                     <p data-i18n="service2_text">إنتاج منتجات المطاحن من أجود أنواع <span class="highlight-gold">الحبوب</span>.</p>
                 </div>
                 <div class="card service-card reveal fade-up delay-2">
-                    <div class="card-icon">
+                    <div class="card-icon icon-blue">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
                     </div>
                     <h3 data-i18n="service3_title">التوريد</h3>
                     <p data-i18n="service3_text">توفير المنتجات للسوق المحلي بجودة عالية واستمرارية.</p>
                 </div>
                 <div class="card service-card reveal fade-up delay-3">
-                    <div class="card-icon">
+                    <div class="card-icon icon-dark-green">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                     </div>
                     <h3 data-i18n="service4_title">التوزيع</h3>
@@ -2604,15 +2684,15 @@
                 <p class="about-lead" data-i18n="quality_text" style="font-size: 1.1rem; margin-bottom: 26px; line-height: 1.8;">في <span class="highlight-gold">اثير الطبيعة</span>، الجودة ليست خيارًا، بل هي أساس كل خطوة نخطوها.</p>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
                     <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 18px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
-                        <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <svg style="width:24px;height:24px;color:#25D366;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator1">جودة عالية</span>
                     </span>
                     <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 18px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
-                        <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <svg style="width:24px;height:24px;color:#EAA222;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator2">مصادر طبيعية موثوقة</span>
                     </span>
                     <span style="display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 500; color: var(--green-dark); padding: 16px 18px; background: var(--cream); border-radius: var(--radius-md); border-right: 4px solid var(--gold); transition: var(--transition);" onmouseover="this.style.transform='translateX(-8px)'; this.style.background='rgba(234, 162, 34, 0.08)';" onmouseout="this.style.transform='translateX(0)'; this.style.background='var(--cream)';">
-                        <svg style="width:22px;height:22px;color:var(--gold);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <svg style="width:24px;height:24px;color:#7AC4E0;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                         <span data-i18n="quality_indicator3">اختيار دقيق</span>
                     </span>
                 </div>
@@ -2641,7 +2721,7 @@
             <div class="contact-grid">
                 <div class="contact-info reveal fade-right">
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon icon-gold">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
                         </div>
                         <div>
@@ -2650,7 +2730,7 @@
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon icon-green">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         </div>
                         <div>
@@ -2659,7 +2739,7 @@
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon icon-blue">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div>
@@ -2686,68 +2766,69 @@
                 <div class="footer-about">
                     <img src="lo.png" alt="اثير الطبيعة" class="footer-logo">
                     <p data-i18n="footer_about">شركة اثير الطبيعة لصناعة الأعلاف و المطاحن - رؤية جديدة تُشرق بجودة <span class="highlight-gold">الطبيعة</span>.</p>
+
+                    <!-- بطاقة رأس المال في الفوتر -->
                     <div class="footer-capital">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
                         <span data-i18n="footer_capital">رأس مال الشركة: 30,000,000 دينار ليبي</span>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#EAA222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                         <span data-i18n="footer_links_title">روابط سريعة</span>
                     </h3>
                     <ul>
                         <li><a href="#home">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                             <span data-i18n="nav_home">الرئيسية</span>
                         </a></li>
                         <li><a href="#about">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#EAA222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                             <span data-i18n="nav_about">من نحن</span>
                         </a></li>
                         <li><a href="#services">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7AC4E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                             <span data-i18n="nav_services">خدماتنا</span>
                         </a></li>
                         <li><a href="#gallery">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#2D8041" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                             <span data-i18n="nav_gallery">معرض الصور</span>
                         </a></li>
                         <li><a href="#contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                             <span data-i18n="nav_contact">تواصل معنا</span>
                         </a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#EAA222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         <span data-i18n="footer_contact_title">معلومات التواصل</span>
                     </h3>
                     <p>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#EAA222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
                         <a href="mailto:info@atheer-altabia.ly">info@atheer-altabia.ly</a>
                     </p>
                     <p>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         <a href="https://wa.me/218914082103" target="_blank" rel="noopener">+218 91 408 2103</a>
                     </p>
                     <p>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7AC4E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         <span data-i18n="contact_address">طرابلس – ليبيا</span>
                     </p>
                     <a href="https://maps.app.goo.gl/9AhnkoLGCvu2x8z16?g_st=ic" target="_blank" rel="noopener" class="footer-map-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
                         <span data-i18n="footer_map_link">عرض على الخريطة</span>
                     </a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copyright">© 2026 شركة اثير الطبيعة لصناعة الأعلاف و المطاحن. جميع الحقوق محفوظة.</p>
-                <p style="margin-top: 8px; color: var(--gold-light); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-heading); flex-wrap: wrap;">
-                    <svg style="width:16px;height:16px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    <span data-i18n="footer_capital_footer">رأس مال الشركة: 30,000,000 دينار ليبي</span>
-                </p>
             </div>
         </div>
     </footer>
@@ -2791,6 +2872,8 @@
             ar: {
                 company_name: 'أثير الطبيعة',
                 company_sub: 'لصناعة الأعلاف والمطاحن',
+                capital_label: 'رأس مال الشركة:',
+                capital_value: '30,000,000 دينار ليبي',
                 nav_home: 'الرئيسية',
                 nav_about: 'من نحن',
                 nav_services: 'خدماتنا',
@@ -2862,12 +2945,13 @@
                 footer_links_title: 'روابط سريعة',
                 footer_contact_title: 'معلومات التواصل',
                 footer_map_link: 'عرض على الخريطة',
-                footer_copyright: '© 2026 شركة اثير الطبيعة لصناعة الأعلاف و المطاحن. جميع الحقوق محفوظة.',
-                footer_capital_footer: 'رأس مال الشركة: 30,000,000 دينار ليبي'
+                footer_copyright: '© 2026 شركة اثير الطبيعة لصناعة الأعلاف و المطاحن. جميع الحقوق محفوظة.'
             },
             en: {
                 company_name: 'Atheer Al-Tabia',
                 company_sub: 'Feed & Mills Manufacturing',
+                capital_label: 'Company Capital:',
+                capital_value: '30,000,000 Libyan Dinars',
                 nav_home: 'Home',
                 nav_about: 'About Us',
                 nav_services: 'Services',
@@ -2939,8 +3023,7 @@
                 footer_links_title: 'Quick Links',
                 footer_contact_title: 'Contact Info',
                 footer_map_link: 'View on Map',
-                footer_copyright: '© 2026 Atheer Al-Tabia for Feed & Mills Manufacturing. All Rights Reserved.',
-                footer_capital_footer: 'Company Capital: 30,000,000 Libyan Dinars'
+                footer_copyright: '© 2026 Atheer Al-Tabia for Feed & Mills Manufacturing. All Rights Reserved.'
             }
         };
 
@@ -3184,6 +3267,31 @@
             });
         }
 
+        // ===== فيديو الهيرو - لضمان التشغيل التلقائي =====
+        function initHeroVideo() {
+            const video = document.querySelector('.hero-video');
+            if (!video) return;
+
+            video.muted = true;
+            video.playsInline = true;
+            
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Video autoplay prevented:', error);
+                    // محاولة تشغيل الفيديو بعد أول تفاعل
+                    document.addEventListener('touchstart', function playOnce() {
+                        video.play();
+                        document.removeEventListener('touchstart', playOnce);
+                    }, { once: true });
+                    document.addEventListener('click', function playOnceClick() {
+                        video.play();
+                        document.removeEventListener('click', playOnceClick);
+                    }, { once: true });
+                });
+            }
+        }
+
         // ===== التشغيل =====
         function init() {
             setLanguage(currentLang);
@@ -3194,6 +3302,7 @@
             initBackToTop();
             initLanguageButtons();
             initSmoothScroll();
+            initHeroVideo();
             observeRevealElements();
         }
 
