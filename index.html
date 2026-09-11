@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0F4C30">
-    <title>أثير الطبيعة | لصناعة الأعلاف والمطاحن</title>
-    <meta name="description" content="أثير الطبيعة لصناعة الأعلاف والمطاحن - رؤية جديدة بجودة الطبيعة. نصنع أجود أنواع الأعلاف ونقدم منتجات المطاحن بأعلى معايير الجودة.">
+    <title>شركة أثير الطبيعة | لصناعة الأعلاف والمطاحن</title>
+    <meta name="description" content="شركة أثير الطبيعة لصناعة الأعلاف والمطاحن - رؤية جديدة بجودة الطبيعة. نصنع أجود أنواع الأعلاف ونقدم منتجات المطاحن بأعلى معايير الجودة.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           DESIGN TOKENS
-           ============================================ */
         :root {
             --color-primary-dark-green: #0F4C30;
             --color-secondary-green: #2D8041;
@@ -69,6 +66,11 @@
             --t-fast: 0.3s var(--ease);
             --t-normal: 0.5s var(--ease);
             --t-slow: 0.8s var(--ease);
+
+            /* Logo و Header Heights */
+            --logo-size: 75px;
+            --header-height: 90px;
+            --header-height-scrolled: 80px;
         }
 
         *, *::before, *::after {
@@ -79,7 +81,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 120px;
+            scroll-padding-top: 100px;
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
             width: 100%;
@@ -271,7 +273,7 @@
         }
 
         /* ============================================
-           HEADER - بدون أي خط أو border
+           HEADER
            ============================================ */
         .header {
             position: fixed;
@@ -279,7 +281,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            height: 110px;
+            height: var(--header-height);
             display: flex;
             align-items: center;
             background: rgba(250, 248, 238, 0.7);
@@ -287,11 +289,9 @@
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             transition: var(--t-fast);
             border: none;
-            border-bottom: none;
             box-shadow: none;
         }
 
-        /* تأكيد إضافي: لا pseudo-elements على الهيدر */
         .header::before,
         .header::after {
             content: none;
@@ -301,9 +301,8 @@
         .header.scrolled {
             background: rgba(250, 248, 238, 0.95);
             box-shadow: 0 8px 32px rgba(15, 76, 48, 0.08);
-            height: 90px;
+            height: var(--header-height-scrolled);
             border: none;
-            border-bottom: none;
         }
 
         .header-inner {
@@ -311,26 +310,26 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            gap: 24px;
+            gap: 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 14px;
             flex-shrink: 0;
         }
 
         .logo img {
-            height: 200px;
+            height: var(--logo-size);
             width: auto;
             object-fit: contain;
             transition: var(--t-fast);
-            filter: drop-shadow(0 4px 16px rgba(15, 76, 48, 0.2));
+            filter: drop-shadow(0 4px 16px rgba(15, 76, 48, 0.15));
         }
 
         .header.scrolled .logo img {
-            height: 72px;
+            height: var(--logo-size);
         }
 
         .logo:hover img {
@@ -345,9 +344,10 @@
 
         .logo-name {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--color-primary-dark-green);
+            white-space: nowrap;
         }
 
         .logo-name span {
@@ -355,9 +355,10 @@
         }
 
         .logo-tag {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             color: var(--gray-500);
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .nav {
@@ -369,9 +370,9 @@
         .nav-link {
             display: flex;
             align-items: center;
-            padding: 12px 18px;
+            padding: 10px 16px;
             font-family: var(--font-heading);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 500;
             color: var(--gray-700);
             border-radius: var(--r-full);
@@ -387,7 +388,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-shrink: 0;
         }
 
@@ -395,16 +396,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 52px;
-            height: 52px;
-            padding: 0 18px;
+            min-width: 48px;
+            height: 48px;
+            padding: 0 16px;
             border-radius: var(--r-full);
             background: var(--glass-bg-strong);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             color: var(--color-primary-dark-green);
             font-family: var(--font-heading);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 700;
             border: 1.5px solid var(--glass-border);
             transition: var(--t-fast);
@@ -419,8 +420,8 @@
 
         .header-cta {
             display: none;
-            padding: 15px 28px;
-            font-size: 0.92rem;
+            padding: 13px 24px;
+            font-size: 0.88rem;
         }
 
         .hamburger {
@@ -428,8 +429,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: var(--r-full);
             background: linear-gradient(135deg, var(--color-primary-dark-green), var(--color-secondary-green));
             gap: 5px;
@@ -440,7 +441,7 @@
 
         .hamburger span {
             display: block;
-            width: 22px;
+            width: 20px;
             height: 2px;
             background: var(--white);
             border-radius: 2px;
@@ -459,14 +460,13 @@
 
         .mobile-menu {
             position: fixed;
-            top: 110px;
+            top: var(--header-height);
             left: 0;
             right: 0;
             background: rgba(250, 248, 238, 0.98);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border: none;
-            border-bottom: none;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s var(--ease);
@@ -520,7 +520,7 @@
            ============================================ */
         .hero {
             position: relative;
-            padding: 200px 0 140px;
+            padding: 160px 0 120px;
             overflow: hidden;
             min-height: 100vh;
             display: flex;
@@ -736,14 +736,12 @@
         }
 
         /* ============================================
-           TRUST BAR - بدون أي border
+           TRUST BAR
            ============================================ */
         .trust-bar {
             padding: 32px 0;
             background: var(--white);
             border: none;
-            border-top: none;
-            border-bottom: none;
         }
 
         .trust-bar-inner {
@@ -1455,7 +1453,7 @@
         }
 
         .footer-brand-logo {
-            height: 130px;
+            height: 100px;
             width: auto;
             margin-bottom: 24px;
             filter: drop-shadow(0 6px 24px rgba(243, 189, 56, 0.25));
@@ -1472,7 +1470,7 @@
 
         .footer-brand .logo-name {
             color: var(--white);
-            font-size: 1.7rem;
+            font-size: 1.5rem;
         }
 
         .footer-brand .logo-name span {
@@ -1481,7 +1479,7 @@
 
         .footer-brand .logo-tag {
             color: rgba(255,255,255,0.7);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
         }
 
         .footer-about {
@@ -1897,42 +1895,33 @@
         @media (max-width: 767px) {
             :root {
                 --section-y: 64px;
+                --logo-size: 75px;
+                --header-height: 90px;
+                --header-height-scrolled: 80px;
             }
 
             .container {
                 padding: 0 20px;
             }
 
-            .header {
-                height: 90px;
-            }
-
-            .header.scrolled {
-                height: 78px;
-            }
-
-            .logo img {
-                height: 80px;
-            }
-
-            .header.scrolled .logo img {
-                height: 75px;
-            }
-
-            .logo-text .logo-tag {
-                display: none;
+            .logo {
+                gap: 10px;
             }
 
             .logo-name {
-                font-size: 1.15rem;
+                font-size: 1rem;
+            }
+
+            .logo-tag {
+                font-size: 0.68rem;
             }
 
             .mobile-menu {
-                top: 90px;
+                top: var(--header-height);
             }
 
             .hero {
-                padding: 160px 0 90px;
+                padding: 140px 0 80px;
                 min-height: auto;
             }
 
@@ -2024,11 +2013,11 @@
             }
 
             .footer-brand-logo {
-                height: 100px;
+                height: 90px;
             }
 
             .footer-brand .logo-name {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
 
             .float-buttons {
@@ -2056,16 +2045,22 @@
         }
 
         @media (max-width: 380px) {
+            :root {
+                --header-height: 85px;
+                --header-height-scrolled: 75px;
+                --logo-size: 70px;
+            }
+
             .container {
                 padding: 0 16px;
             }
 
-            .logo img {
-                height: 75px;
+            .logo-name {
+                font-size: 0.9rem;
             }
 
-            .logo-name {
-                font-size: 1.02rem;
+            .logo-tag {
+                font-size: 0.62rem;
             }
 
             .hero-visual-wrap {
@@ -2073,7 +2068,7 @@
             }
 
             .footer-brand-logo {
-                height: 85px;
+                height: 80px;
             }
         }
 
@@ -2119,13 +2114,11 @@
 </head>
 <body>
 
-    <!-- ============================================
-         HEADER - بدون أي خط أو border
-         ============================================ -->
+    <!-- HEADER -->
     <header class="header" id="header">
         <div class="container header-inner">
             <a href="#home" class="logo" aria-label="شركة أثير الطبيعة">
-                <img src="lo.png" alt="شعار أثير الطبيعة">
+                <img src="lo.png" alt="شعار شركة أثير الطبيعة">
                 <div class="logo-text">
                     <span class="logo-name">شركة أثير <span>الطبيعة</span></span>
                     <span class="logo-tag">لصناعة الأعلاف والمطاحن</span>
@@ -2186,9 +2179,7 @@
     </div>
 
     <main>
-        <!-- ============================================
-             HERO
-             ============================================ -->
+        <!-- HERO -->
         <section class="hero" id="home">
             <video class="hero-video" autoplay muted loop playsinline preload="auto">
                 <source src="vo1.mp4" type="video/mp4">
@@ -2517,16 +2508,14 @@
         </section>
     </main>
 
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="lo.png" alt="أثير الطبيعة" class="footer-brand-logo">
                     <div class="logo-text">
-                        <span class="logo-name">أثير <span>الطبيعة</span></span>
+                        <span class="logo-name">شركة أثير <span>الطبيعة</span></span>
                         <span class="logo-tag">لصناعة الأعلاف والمطاحن</span>
                     </div>
                     <p class="footer-about" data-i18n="footer_about">رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن.</p>
@@ -2574,7 +2563,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p data-i18n="footer_copyright">© 2026 أثير الطبيعة. جميع الحقوق محفوظة.</p>
+                <p data-i18n="footer_copyright">© 2026 شركة أثير الطبيعة. جميع الحقوق محفوظة.</p>
                 <div class="footer-social">
                     <a href="https://wa.me/218914082103" target="_blank" rel="noopener" class="social-btn" aria-label="واتساب">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.53 3.66 1.44 5.18L2 22l4.99-1.31A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.22-.45-4.58-1.24l-.33-.19-2.96-.78.31.31A7.98 7.98 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.5-5.5c-.25-.12-1.47-.72-1.69-.8-.22-.08-.38-.12-.54.12-.16.25-.62.8-.76.97-.14.16-.28.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.54-1.3-.74-1.79-.2-.47-.4-.4-.54-.4-.14-.01-.31-.01-.47-.01-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.16 1.73 2.64 4.19 3.7.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
@@ -2685,7 +2674,7 @@
                 footer_about: 'رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن.',
                 footer_links: 'روابط سريعة',
                 footer_contact: 'تواصل معنا',
-                footer_copyright: '© 2026 أثير الطبيعة. جميع الحقوق محفوظة.'
+                footer_copyright: '© 2026 شركة أثير الطبيعة. جميع الحقوق محفوظة.'
             },
             en: {
                 lang_btn: 'عربي',
@@ -2953,8 +2942,8 @@
             initReveal();
             initCounters();
             initBackTop();
-            initSmoothScroll();
             initLangButtons();
+            initSmoothHeroVideo = initHeroVideo;
             initHeroVideo();
         }
 
