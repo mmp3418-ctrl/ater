@@ -271,7 +271,7 @@
         }
 
         /* ============================================
-           HEADER - Big Logo
+           HEADER - بدون أي خط أو border
            ============================================ */
         .header {
             position: fixed;
@@ -286,14 +286,24 @@
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             transition: var(--t-fast);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            border: none;
+            border-bottom: none;
+            box-shadow: none;
+        }
+
+        /* تأكيد إضافي: لا pseudo-elements على الهيدر */
+        .header::before,
+        .header::after {
+            content: none;
+            display: none;
         }
 
         .header.scrolled {
             background: rgba(250, 248, 238, 0.95);
-            box-shadow: 0 8px 32px rgba(15, 76, 48, 0.1);
-            border-bottom-color: rgba(234, 162, 34, 0.2);
+            box-shadow: 0 8px 32px rgba(15, 76, 48, 0.08);
             height: 90px;
+            border: none;
+            border-bottom: none;
         }
 
         .header-inner {
@@ -455,7 +465,8 @@
             background: rgba(250, 248, 238, 0.98);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border-bottom: 1px solid rgba(255,255,255,0.4);
+            border: none;
+            border-bottom: none;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s var(--ease);
@@ -505,7 +516,7 @@
         }
 
         /* ============================================
-           HERO - Video with LIGHT Overlay
+           HERO
            ============================================ */
         .hero {
             position: relative;
@@ -527,7 +538,6 @@
             pointer-events: none;
         }
 
-        /* طبقة داكنة خفيفة فقط — الفيديو يظهر بوضوح */
         .hero-overlay {
             position: absolute;
             inset: 0;
@@ -726,12 +736,14 @@
         }
 
         /* ============================================
-           TRUST BAR
+           TRUST BAR - بدون أي border
            ============================================ */
         .trust-bar {
             padding: 32px 0;
             background: var(--white);
-            border-bottom: 1px solid var(--gray-100);
+            border: none;
+            border-top: none;
+            border-bottom: none;
         }
 
         .trust-bar-inner {
@@ -1415,7 +1427,7 @@
         }
 
         /* ============================================
-           FOOTER - Very Big Logo
+           FOOTER
            ============================================ */
         .footer {
             background: var(--color-primary-dark-green);
@@ -2108,7 +2120,7 @@
 <body>
 
     <!-- ============================================
-         HEADER - Big Logo
+         HEADER - بدون أي خط أو border
          ============================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
@@ -2175,7 +2187,7 @@
 
     <main>
         <!-- ============================================
-             HERO - Video with LIGHT Overlay
+             HERO
              ============================================ -->
         <section class="hero" id="home">
             <video class="hero-video" autoplay muted loop playsinline preload="auto">
@@ -2506,7 +2518,7 @@
     </main>
 
     <!-- ============================================
-         FOOTER - Very Big Logo
+         FOOTER
          ============================================ -->
     <footer class="footer">
         <div class="container">
@@ -2555,7 +2567,7 @@
                         </a>
                         <a href="https://maps.app.goo.gl/xtwVAJJ5dvBQNYqa9" target="_blank" rel="noopener" class="footer-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span data-i18n="contact_address">بنغازي - ليبيا</span>
+                            <span data-i18n="contact_address">طرابلس - ليبيا</span>
                         </a>
                     </div>
                 </div>
