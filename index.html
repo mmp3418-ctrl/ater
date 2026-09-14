@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0F4C30">
     <title>شركة أثير الطبيعة | لصناعة الأعلاف والمطاحن</title>
-    <meta name="description" content="شركة أثير الطبيعة لصناعة الأعلاف والمطاحن - تأسست 2018 برؤية جديدة بجودة الطبيعة. نصنع أجود أنواع الأعلاف ونقدم منتجات المطاحن بأعلى معايير الجودة.">
+    <meta name="description" content="شركة أثير الطبيعة لصناعة الأعلاف والمطاحن - تأسست 2020 برؤية جديدة بجودة الطبيعة. نصنع أجود أنواع الأعلاف ونقدم منتجات المطاحن بأعلى معايير الجودة.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -1199,24 +1199,23 @@
             opacity: 1;
         }
 
-        /* CAPITAL */
-        .capital-section {
+        /* COMPANY INFO CARD (بيانات الشركة الرسمية) */
+        .company-info-section {
             padding: 60px 0;
             background: var(--white);
         }
 
-        .capital-card {
+        .company-info-card {
             position: relative;
             background: linear-gradient(135deg, var(--color-primary-dark-green), var(--color-secondary-green));
             border-radius: var(--r-xl);
             padding: 60px 40px;
-            text-align: center;
             color: var(--white);
             overflow: hidden;
             box-shadow: 0 30px 80px rgba(15, 76, 48, 0.3);
         }
 
-        .capital-card::before {
+        .company-info-card::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -1227,7 +1226,7 @@
             border-radius: 50%;
         }
 
-        .capital-card::after {
+        .company-info-card::after {
             content: '';
             position: absolute;
             bottom: -50%;
@@ -1238,12 +1237,17 @@
             border-radius: 50%;
         }
 
-        .capital-content {
+        .company-info-content {
             position: relative;
             z-index: 1;
         }
 
-        .capital-icon {
+        .company-info-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .company-info-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1252,43 +1256,102 @@
             border-radius: var(--r-lg);
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             border: 2px solid rgba(243, 189, 56, 0.4);
             box-shadow: 0 12px 40px rgba(0,0,0,0.2);
         }
 
-        .capital-icon svg {
+        .company-info-icon svg {
             width: 40px;
             height: 40px;
             color: var(--color-light-gold);
             stroke-width: 2;
         }
 
-        .capital-label {
+        .company-info-title {
             font-family: var(--font-heading);
-            font-size: 1rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 12px;
-            letter-spacing: 0.05em;
-        }
-
-        .capital-value {
-            font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
             font-weight: 700;
-            color: var(--color-light-gold);
-            line-height: 1.1;
-            letter-spacing: -0.03em;
+            color: var(--white);
             margin-bottom: 8px;
-            text-shadow: 0 6px 30px rgba(243, 189, 56, 0.4);
         }
 
-        .capital-currency {
-            font-family: var(--font-heading);
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
+        .company-info-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
             font-weight: 500;
-            color: rgba(255,255,255,0.95);
+        }
+
+        .company-info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .company-info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 24px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--r-md);
+            transition: var(--t-fast);
+        }
+
+        .company-info-item:hover {
+            background: rgba(255,255,255,0.14);
+            transform: translateX(-4px);
+            border-color: rgba(243, 189, 56, 0.4);
+        }
+
+        .company-info-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-wheat-gold), var(--color-light-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(234, 162, 34, 0.4);
+        }
+
+        .company-info-item-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--color-primary-dark-green);
+            stroke-width: 2.2;
+        }
+
+        .company-info-item-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .company-info-item-label {
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 0.02em;
+        }
+
+        .company-info-item-value {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            word-break: break-word;
+            direction: ltr;
+            text-align: right;
         }
 
         /* CONTACT */
@@ -1437,11 +1500,22 @@
             height: 14px;
         }
 
-        .contact-map-btn {
-            margin-top: 16px;
+        /* MAP (الخريطة داخل الموقع) */
+        .contact-map {
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            aspect-ratio: 16 / 10;
+            min-height: 340px;
+            border: 1px solid var(--glass-border);
+            background: var(--gray-100);
+        }
+
+        .contact-map iframe {
+            display: block;
             width: 100%;
-            padding: 18px 32px;
-            font-size: 1rem;
+            height: 100%;
+            border: none;
         }
 
         /* CTA */
@@ -1932,6 +2006,14 @@
             margin-left: auto;
         }
 
+        html[dir="ltr"] .company-info-item:hover {
+            transform: translateX(4px);
+        }
+
+        html[dir="ltr"] .company-info-item-value {
+            text-align: left;
+        }
+
         /* RESPONSIVE - TABLET */
         @media (min-width: 640px) {
             .container { padding: 0 32px; }
@@ -1949,7 +2031,11 @@
                 gap: 16px;
             }
 
-            .capital-card {
+            .company-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .company-info-card {
                 padding: 72px 56px;
             }
 
@@ -1995,6 +2081,11 @@
                 grid-template-columns: 1fr 1fr;
             }
 
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
+
             .footer-grid {
                 grid-template-columns: 1.5fr 1fr 1fr;
                 gap: 60px;
@@ -2025,7 +2116,12 @@
                 gap: 20px;
             }
 
-            .capital-card {
+            .company-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .company-info-card {
                 padding: 90px 72px;
             }
 
@@ -2119,18 +2215,38 @@
                 height: 28px;
             }
 
-            .capital-card {
-                padding: 48px 28px;
+            .company-info-card {
+                padding: 48px 24px;
             }
 
-            .capital-icon {
+            .company-info-icon {
                 width: 68px;
                 height: 68px;
             }
 
-            .capital-icon svg {
+            .company-info-icon svg {
                 width: 34px;
                 height: 34px;
+            }
+
+            .company-info-item {
+                padding: 16px 18px;
+                gap: 14px;
+            }
+
+            .company-info-item-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .company-info-item-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .company-info-item-value {
+                font-size: 1rem;
+                text-align: right;
             }
 
             .cta-card {
@@ -2163,6 +2279,11 @@
 
             .contact-phone-actions {
                 margin-right: 0;
+            }
+
+            .contact-map {
+                aspect-ratio: 4 / 3;
+                min-height: 280px;
             }
 
             .footer-brand-logo {
@@ -2218,6 +2339,10 @@
 
             .hero-visual-wrap {
                 max-width: 280px;
+            }
+
+            .company-info-item-value {
+                font-size: 0.92rem;
             }
 
             .footer-brand-logo {
@@ -2358,7 +2483,7 @@
                 <div class="hero-content reveal">
                     <div class="hero-eyebrow">
                         <span class="dot"></span>
-                        <span data-i18n="hero_eyebrow">تأسست عام 2018 · خبرة ممتدة</span>
+                        <span data-i18n="hero_eyebrow">تأسست عام 2020 · خبرة ممتدة</span>
                     </div>
                     
                     <h1 class="hero-title" data-i18n="hero_title">
@@ -2401,7 +2526,7 @@
                             </div>
                             <div class="hero-badge-text">
                                 <span class="hero-badge-value" data-i18n="hero_badge2_value">موثوق</span>
-                                <span class="hero-badge-label" data-i18n="hero_badge2">منذ 2018</span>
+                                <span class="hero-badge-label" data-i18n="hero_badge2">منذ 2020</span>
                             </div>
                         </div>
                     </div>
@@ -2486,7 +2611,7 @@
                         <img src="j3.jpeg" alt="عن أثير الطبيعة" loading="lazy">
                         <div class="about-badge">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            <span class="about-badge-text" data-i18n="about_badge">تأسست 2018</span>
+                            <span class="about-badge-text" data-i18n="about_badge">تأسست 2020</span>
                         </div>
                     </div>
 
@@ -2494,7 +2619,7 @@
                         <span class="eyebrow" data-i18n="about_eyebrow">من نحن</span>
                         <h2 class="section-title" data-i18n="about_title">شركة أثير الطبيعة</h2>
                         <p class="section-desc" data-i18n="about_desc">رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن.</p>
-                        <p class="about-text" data-i18n="about_p1">في قلب عام 2018، وُلدت شركة أثير الطبيعة لصناعة الأعلاف والمطاحن لتعلن عن انطلاقة استثنائية في عالم الجودة والمنتجات الطبيعية.</p>
+                        <p class="about-text" data-i18n="about_p1">في قلب عام 2020، وُلدت شركة أثير الطبيعة لصناعة الأعلاف والمطاحن لتعلن عن انطلاقة استثنائية في عالم الجودة والمنتجات الطبيعية.</p>
                         
                         <div class="about-list">
                             <div class="about-list-item">
@@ -2564,7 +2689,7 @@
                         <div class="stat-label" data-i18n="stat1">جودة مضمونة</div>
                     </div>
                     <div class="stat-item reveal reveal-delay-1">
-                        <div class="stat-value" data-count="2018">0</div>
+                        <div class="stat-value" data-count="2020">0</div>
                         <div class="stat-label" data-i18n="stat3">سنة التأسيس</div>
                     </div>
                 </div>
@@ -2584,20 +2709,107 @@
             </div>
         </section>
 
-        <!-- CAPITAL -->
-        <section class="capital-section">
+        <!-- COMPANY INFO (بيانات الشركة الرسمية) -->
+        <section class="company-info-section">
             <div class="container">
-                <div class="capital-card reveal">
-                    <div class="capital-content">
-                        <div class="capital-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="1" x2="12" y2="23"/>
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                            </svg>
+                <div class="company-info-card reveal">
+                    <div class="company-info-content">
+                        <div class="company-info-header">
+                            <div class="company-info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                            </div>
+                            <h2 class="company-info-title" data-i18n="company_info_title">بيانات الشركة الرسمية</h2>
+                            <p class="company-info-subtitle" data-i18n="company_info_subtitle">السجل التجاري والبيانات الرسمية المعتمدة</p>
                         </div>
-                        <p class="capital-label" data-i18n="capital_label">رأس مال الشركة</p>
-                        <div class="capital-value" data-i18n="capital_value">30,000,000</div>
-                        <div class="capital-currency" data-i18n="capital_currency">دينار ليبي</div>
+
+                        <div class="company-info-grid">
+                            <div class="company-info-item">
+                                <div class="company-info-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                </div>
+                                <div class="company-info-item-text">
+                                    <span class="company-info-item-label" data-i18n="company_info_capital_label">رأس المال</span>
+                                    <span class="company-info-item-value" data-i18n="company_info_capital_value">30,000,000 دينار ليبي</span>
+                                </div>
+                            </div>
+
+                            <div class="company-info-item">
+                                <div class="company-info-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                </div>
+                                <div class="company-info-item-text">
+                                    <span class="company-info-item-label" data-i18n="company_info_reg_label">رقم السجل التجاري</span>
+                                    <span class="company-info-item-value">172.14150</span>
+                                </div>
+                            </div>
+
+                            <div class="company-info-item">
+                                <div class="company-info-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </div>
+                                <div class="company-info-item-text">
+                                    <span class="company-info-item-label" data-i18n="company_info_date_label">تاريخ التأسيس</span>
+                                    <span class="company-info-item-value">19.8.2020</span>
+                                </div>
+                            </div>
+
+                            <div class="company-info-item">
+                                <div class="company-info-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        <path d="m9 12 2 2 4-4"/>
+                                    </svg>
+                                </div>
+                                <div class="company-info-item-text">
+                                    <span class="company-info-item-label" data-i18n="company_info_license_label">رقم الرخصة التجارية</span>
+                                    <span class="company-info-item-value">14150</span>
+                                </div>
+                            </div>
+
+                            <div class="company-info-item">
+                                <div class="company-info-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 12l2 2 4-4"/>
+                                        <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.66 0 3.22.45 4.58 1.24"/>
+                                    </svg>
+                                </div>
+                                <div class="company-info-item-text">
+                                    <span class="company-info-item-label" data-i18n="company_info_tax_label">الرقم الضريبي</span>
+                                    <span class="company-info-item-value">14772</span>
+                                </div>
+                            </div>
+
+                            <div class="company-info-item">
+                                <div class="company-info-item-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 21h18"/>
+                                        <path d="M5 21V7l7-4 7 4v14"/>
+                                        <path d="M9 21v-6h6v6"/>
+                                    </svg>
+                                </div>
+                                <div class="company-info-item-text">
+                                    <span class="company-info-item-label" data-i18n="company_info_chamber_label">رقم القيد بالغرفة التجارية</span>
+                                    <span class="company-info-item-value">20072…89005</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2670,11 +2882,16 @@
                                 <span class="contact-value" data-i18n="contact_address">بنغازي - ليبيا</span>
                             </div>
                         </div>
+                    </div>
 
-                        <a href="https://maps.app.goo.gl/9AhnkoLGCvu2x8z16?g_st=ic" target="_blank" rel="noopener" class="btn btn-gold contact-map-btn reveal reveal-delay-3">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span data-i18n="contact_map_btn">فتح الموقع على الخريطة</span>
-                        </a>
+                    <div class="contact-map reveal reveal-delay-1">
+                        <iframe 
+                            src="https://www.google.com/maps?q=Benghazi,+Libya&output=embed"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="موقع شركة أثير الطبيعة - بنغازي، ليبيا">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -2712,7 +2929,7 @@
                         <span class="logo-name">شركة أثير <span>الطبيعة</span></span>
                         <span class="logo-tag">لصناعة الأعلاف والمطاحن</span>
                     </div>
-                    <p class="footer-about" data-i18n="footer_about">رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن - تأسست 2018.</p>
+                    <p class="footer-about" data-i18n="footer_about">رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن - تأسست 2020.</p>
                 </div>
 
                 <div class="footer-col">
@@ -2785,7 +3002,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p data-i18n="footer_copyright">© 2018 شركة أثير الطبيعة. جميع الحقوق محفوظة.</p>
+                <p data-i18n="footer_copyright">© 2020 شركة أثير الطبيعة. جميع الحقوق محفوظة.</p>
                 <div class="footer-social">
                     <a href="https://wa.me/218925999597" target="_blank" rel="noopener" class="social-btn" aria-label="واتساب">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.89.53 3.66 1.44 5.18L2 22l4.99-1.31A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
@@ -2834,13 +3051,13 @@
                 nav_about: 'من نحن',
                 nav_gallery: 'معرض الصور',
                 nav_contact: 'تواصل معنا',
-                hero_eyebrow: 'تأسست عام 2018 · خبرة ممتدة',
+                hero_eyebrow: 'تأسست عام 2020 · خبرة ممتدة',
                 hero_title: 'من قلب <span class="accent">الطبيعة</span><br>إلى مائدتك',
                 hero_desc: 'نصنع أجود أنواع الأعلاف ونقدم منتجات المطاحن بأعلى معايير الجودة، لنضمن لك منتجات طبيعية أصيلة في كل حبة.',
                 hero_btn_primary: 'اكتشف خدماتنا',
                 hero_btn_secondary: 'تواصل معنا',
                 hero_badge1: 'جودة طبيعية',
-                hero_badge2: 'منذ 2018',
+                hero_badge2: 'منذ 2020',
                 hero_badge2_value: 'موثوق',
                 trust_1: 'جودة مضمونة',
                 trust_2: 'تسليم سريع',
@@ -2860,8 +3077,8 @@
                 about_eyebrow: 'من نحن',
                 about_title: 'شركة أثير الطبيعة',
                 about_desc: 'رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن.',
-                about_badge: 'تأسست 2018',
-                about_p1: 'في قلب عام 2018، وُلدت شركة أثير الطبيعة لصناعة الأعلاف والمطاحن لتعلن عن انطلاقة استثنائية في عالم الجودة والمنتجات الطبيعية.',
+                about_badge: 'تأسست 2020',
+                about_p1: 'في قلب عام 2020، وُلدت شركة أثير الطبيعة لصناعة الأعلاف والمطاحن لتعلن عن انطلاقة استثنائية في عالم الجودة والمنتجات الطبيعية.',
                 about_list1: 'أعلاف عالية الجودة',
                 about_list2: 'منتجات مطاحن متميزة',
                 about_list3: 'خبرة صناعية عريقة',
@@ -2881,9 +3098,15 @@
                 gallery_eyebrow: 'معرض الصور',
                 gallery_title: 'من عالم أثير الطبيعة',
                 gallery_desc: 'لقطات من منتجاتنا وخدماتنا ومراحل العمل.',
-                capital_label: 'رأس مال الشركة',
-                capital_value: '30,000,000',
-                capital_currency: 'دينار ليبي',
+                company_info_title: 'بيانات الشركة الرسمية',
+                company_info_subtitle: 'السجل التجاري والبيانات الرسمية المعتمدة',
+                company_info_capital_label: 'رأس المال',
+                company_info_capital_value: '30,000,000 دينار ليبي',
+                company_info_reg_label: 'رقم السجل التجاري',
+                company_info_date_label: 'تاريخ التأسيس',
+                company_info_license_label: 'رقم الرخصة التجارية',
+                company_info_tax_label: 'الرقم الضريبي',
+                company_info_chamber_label: 'رقم القيد بالغرفة التجارية',
                 contact_eyebrow: 'تواصل معنا',
                 contact_title: 'نحن هنا لخدمتك',
                 contact_desc: 'فريقنا جاهز للإجابة على استفساراتك في أي وقت.',
@@ -2891,15 +3114,14 @@
                 contact_whatsapp_label: 'واتساب / هاتف',
                 contact_address_label: 'العنوان',
                 contact_address: 'بنغازي - ليبيا',
-                contact_map_btn: 'فتح الموقع على الخريطة',
                 cta_title: 'هل أنت مستعد للبدء معنا؟',
                 cta_desc: 'تواصل مع فريق أثير الطبيعة واكتشف عالمًا من الجودة والنقاء الطبيعي.',
                 cta_btn_whatsapp: 'تواصل عبر واتساب',
                 cta_btn_email: 'أرسل بريدًا',
-                footer_about: 'رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن - تأسست 2018.',
+                footer_about: 'رؤية جديدة تُشرق بجودة الطبيعة في عالم الأعلاف والمطاحن - تأسست 2020.',
                 footer_links: 'روابط سريعة',
                 footer_contact: 'تواصل معنا',
-                footer_copyright: '© 2018 شركة أثير الطبيعة. جميع الحقوق محفوظة.'
+                footer_copyright: '© 2020 شركة أثير الطبيعة. جميع الحقوق محفوظة.'
             },
             en: {
                 lang_btn: 'عربي',
@@ -2910,13 +3132,13 @@
                 nav_about: 'About',
                 nav_gallery: 'Gallery',
                 nav_contact: 'Contact',
-                hero_eyebrow: 'Established 2018 · Extended Experience',
+                hero_eyebrow: 'Established 2020 · Extended Experience',
                 hero_title: 'From the Heart of <span class="accent">Nature</span><br>to Your Table',
                 hero_desc: 'We craft the finest animal feed and provide premium mill products with the highest quality standards.',
                 hero_btn_primary: 'Discover Services',
                 hero_btn_secondary: 'Contact Us',
                 hero_badge1: 'Natural Quality',
-                hero_badge2: 'Since 2018',
+                hero_badge2: 'Since 2020',
                 hero_badge2_value: 'Trusted',
                 trust_1: 'Guaranteed Quality',
                 trust_2: 'Fast Delivery',
@@ -2936,8 +3158,8 @@
                 about_eyebrow: 'About Us',
                 about_title: 'Atheer Al-Tabia',
                 about_desc: 'A new vision shining with nature\'s quality in feed and mills.',
-                about_badge: 'Established 2018',
-                about_p1: 'In 2018, Atheer Al-Tabia was born to mark an exceptional launch in quality and natural products.',
+                about_badge: 'Established 2020',
+                about_p1: 'In 2020, Atheer Al-Tabia was born to mark an exceptional launch in quality and natural products.',
                 about_list1: 'Premium Quality Feed',
                 about_list2: 'Distinguished Mill Products',
                 about_list3: 'Deep Industrial Expertise',
@@ -2957,9 +3179,15 @@
                 gallery_eyebrow: 'Gallery',
                 gallery_title: 'From the World of Atheer Al-Tabia',
                 gallery_desc: 'Snapshots of our products, services, and work stages.',
-                capital_label: 'Company Capital',
-                capital_value: '30,000,000',
-                capital_currency: 'Libyan Dinars',
+                company_info_title: 'Official Company Data',
+                company_info_subtitle: 'Commercial Register and Official Certified Data',
+                company_info_capital_label: 'Capital',
+                company_info_capital_value: '30,000,000 Libyan Dinars',
+                company_info_reg_label: 'Commercial Register No.',
+                company_info_date_label: 'Establishment Date',
+                company_info_license_label: 'Commercial License No.',
+                company_info_tax_label: 'Tax Number',
+                company_info_chamber_label: 'Chamber of Commerce Reg. No.',
                 contact_eyebrow: 'Contact',
                 contact_title: 'We Are Here to Serve You',
                 contact_desc: 'Our team is ready to answer your inquiries anytime.',
@@ -2967,15 +3195,14 @@
                 contact_whatsapp_label: 'WhatsApp / Phone',
                 contact_address_label: 'Address',
                 contact_address: 'Benghazi - Libya',
-                contact_map_btn: 'Open Location on Map',
                 cta_title: 'Ready to Start With Us?',
                 cta_desc: 'Contact the Atheer Al-Tabia team and discover a world of quality and natural purity.',
                 cta_btn_whatsapp: 'Contact on WhatsApp',
                 cta_btn_email: 'Send an Email',
-                footer_about: 'A new vision shining with nature\'s quality in feed and mills - Established 2018.',
+                footer_about: 'A new vision shining with nature\'s quality in feed and mills - Established 2020.',
                 footer_links: 'Quick Links',
                 footer_contact: 'Contact Us',
-                footer_copyright: '© 2018 Atheer Al-Tabia. All Rights Reserved.'
+                footer_copyright: '© 2020 Atheer Al-Tabia. All Rights Reserved.'
             }
         };
 
