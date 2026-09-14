@@ -1500,22 +1500,36 @@
             height: 14px;
         }
 
-        /* MAP (الخريطة داخل الموقع) */
-        .contact-map {
-            border-radius: var(--r-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            aspect-ratio: 16 / 10;
+        /* MAP CTA BOX (بديل مربع الخريطة) */
+        .map-cta-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             min-height: 340px;
-            border: 1px solid var(--glass-border);
-            background: var(--gray-100);
+            background: linear-gradient(135deg, rgba(15, 76, 48, 0.05), rgba(45, 128, 65, 0.08));
+            border: 2px dashed rgba(45, 128, 65, 0.3);
+            border-radius: var(--r-lg);
+            padding: 40px 24px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--t-normal);
         }
 
-        .contact-map iframe {
-            display: block;
+        .map-cta-box:hover {
+            border-color: rgba(234, 162, 34, 0.5);
+            background: linear-gradient(135deg, rgba(15, 76, 48, 0.08), rgba(45, 128, 65, 0.12));
+        }
+
+        .map-cta-box .btn {
             width: 100%;
-            height: 100%;
-            border: none;
+            max-width: 420px;
+            padding: 22px 40px;
+            font-size: 1.1rem;
+            border-radius: var(--r-lg);
+        }
+
+        .map-cta-box .btn svg {
+            width: 26px;
+            height: 26px;
         }
 
         /* CTA */
@@ -2083,7 +2097,7 @@
 
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
-                align-items: start;
+                align-items: stretch;
             }
 
             .footer-grid {
@@ -2281,9 +2295,18 @@
                 margin-right: 0;
             }
 
-            .contact-map {
-                aspect-ratio: 4 / 3;
+            .map-cta-box {
                 min-height: 280px;
+            }
+
+            .map-cta-box .btn {
+                padding: 18px 28px;
+                font-size: 1rem;
+            }
+
+            .map-cta-box .btn svg {
+                width: 22px;
+                height: 22px;
             }
 
             .footer-brand-logo {
@@ -2884,17 +2907,13 @@
                         </div>
                     </div>
 
-                    <div class="contact-map reveal reveal-delay-1" style="display: flex; flex-direction: column; gap: 16px;">
-                        <iframe 
-                            src="https://maps.app.goo.gl/EFwkND9bD9fe89gE8"
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="موقع شركة أثير الطبيعة - بنغازي، ليبيا"
-                            style="flex: 1;">
-                        </iframe>
-                        <a href="https://maps.app.goo.gl/EFwkND9bD9fe89gE8" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; border-radius: var(--r-lg);">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <!-- MAP CTA BOX (بديل مربع الخريطة - زر فقط) -->
+                    <div class="map-cta-box reveal reveal-delay-1">
+                        <a href="https://maps.app.goo.gl/aPFeDTA9e3wv6D8U6" target="_blank" rel="noopener" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
                             <span data-i18n="map_btn">عرض الموقع على الخريطة</span>
                         </a>
                     </div>
@@ -2998,7 +3017,7 @@
                             </div>
                         </div>
 
-                        <a href="https://maps.app.goo.gl/EFwkND9bD9fe89gE8" target="_blank" rel="noopener" class="footer-link" style="margin-top: 12px;">
+                        <a href="https://maps.app.goo.gl/aPFeDTA9e3wv6D8U6" target="_blank" rel="noopener" class="footer-link" style="margin-top: 12px;">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             <span data-i18n="contact_address">بنغازي - ليبيا</span>
                         </a>
@@ -3405,9 +3424,23 @@
             initReveal();
             initCounters();
             initBackTop();
-            initSmoothScroll();
+            initSmoothNavigation();
             initLangButtons();
             initHeroVideo();
+        }
+        
+        function initSmoothNavigation() {
+            // نفس وظيفة initSmoothScroll لكن باسم مختلف لتفادي أي تعارض
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', function(e) {
+                    const id = this.getAttribute('href');
+                    if (id === '#' || id.length < 2) return;
+                    const target = document.querySelector(id);
+                    if (!target) return;
+                    e.preventDefault();
+                    window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                });
+            });
         }
 
         if (document.readyState === 'loading') {
